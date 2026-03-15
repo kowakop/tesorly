@@ -1,0 +1,50 @@
+# SISTEMA DE LOGIN E CADASTRO - CLIENTES
+
+* Nome completo
+* E-mail
+* número de telefone
+* cidade e região (import)
+
+
+
+# SISTEMA DE LOGIN E CADASTRO - EMPRESÁRIOS
+
+* Nome completo
+* Nome do estabelecimento
+* número de telefone
+* cidade e região
+* e-mail
+* CNPJ -> sistema de validação (ver como funciona / talvez não implementar)
+
+
+
+# O QUE O SITE PRECISA TER:
+
+* sitema de upload de fotos (clientes e empresários podem publicar ou só empresário publicar)
+* central de avaliação (apenas clientes podem avaliar -> sistema simples com estrelas e comentários - possivelmente sem média aritmética)
+
+
+! única complicaçãozinha é o cartão !
+* PERFIL DO CLIENTE: 
+-> informações públicas : somente nome e região, fotos pós-atendimento (se cliente puder colocar), avaliações
+-> informações disponiveis para o empresário : nome e número de telefone para poder contactar
+-> cartão de fidelidade | empresário vai marcar que o cliente foi e vai ser marcado nesse cartão, se o empresário ativar a funcionalidade, o cliente ganha um pacote x grátis após qtd. x de dias
+
+* SISTEMA DE AGENDAMENTOS:
+-> importar uma agenda, de forma que dê para marcar hórario e dia | cliente marcou, apareceu pro usuário | fazer em formato de lista pro usuário
+
+* CONTROLE DE VENDAS :
+-> 
+
+* CONTROLE DE PAGAMENTO :
+-> importar aba de controle de clientes, o preço do pacotes de serviços e adicionar status de pago ou não e qual o meio (pix, cartão, etc)
+
+* PACOTES DE SERVIÇOS :
+-> pacotes para o cliente poder agendar
+-> nome, preço, média de hora de serviço
+
+* CONTROLE DE CLIENTES :
+-> lista com nomes dos clientes e número de telefone
+
+
+/// add mais coisas dps (se tiver)
