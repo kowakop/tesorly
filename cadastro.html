@@ -49,20 +49,38 @@ else {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
     <title>Cadastro - Tesorly</title>
 </head>
 <body>
         <h1>Cadastro</h1>
 
     <form action="" method="post" id="form">
-        <label for="name">Nome Completo:</label>
+
+        <div class="form-content">
+            <label for="name">Nome Completo:</label>
             <input type="text" id="name" name="name">
+            <a>Mensagem de erro</a>
+        </div>
 
-        <label for="email">Email:</label>
+        <div class="form-content">
+            <label for="email">Email:</label>
             <input type="email" id="email" name="email">
+            <a>Mensagem de erro</a>
+        </div>
 
-        <label for="senha">Senha:</label>
+        <div class="form-content">
+            <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha">
+            <a>Mensagem de erro</a>
+        </div>
+        
+        <div class="form-content">
+            <div class="mostrarSenha">
+                <input type="checkbox" id="mostrar-senha" name="mostrar-senha">
+                <label for="mostrar-senha">Mostrar Senha</label>
+            </div>
+        </div>
         
         <label for="foto">Foto de perfil:</label>
             <input type="file" id="foto" name="foto">

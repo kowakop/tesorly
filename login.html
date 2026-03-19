@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
     <title>Login - Tesorly</title>
 </head>
 <body>
@@ -10,16 +11,27 @@
     <h1>Login</h1>
 
     <form action="" method="post" id="form">
-        <label for="name">Nome Completo:</label>
-            <input type="text" id="name" name="name">
 
-        <label for="senha">Senha:</label>
+        <div class="form-content">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <a>Mensagem de erro</a>
+        </div>
+
+        <div class="form-content">
+            <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha">
+            <a>Mensagem de erro</a>
+        </div>
         
-        <div class="mostrarSenha">
-            <input type="checkbox" id="mostrar-senha" name="mostrar-senha">
-            <label for="mostrar-senha">Mostrar Senha</label>
-        </div> <!--dps transformar em um olhinho, vcs que sabem | acho q dá pra importar-->
+        <div class="form-content">
+            <div class="mostrarSenha">
+                <input type="checkbox" id="mostrar-senha" name="mostrar-senha">
+                <label for="mostrar-senha">Mostrar Senha</label>
+            </div> 
+        </div>
+        
+        <!--dps transformar em um olhinho, vcs que sabem | acho q dá pra importar-->
 
         <div class="registro">
             <p>Não tem uma conta? <a href="cadastro.html">Registre-se</a></p>
@@ -30,22 +42,5 @@
 
 </body>
 </html>
-
-<script>
-
-    const senha = document.getElementById('senha');
-    const mostrarSenha = document.getElementById('mostrar-senha');
-
-    mostrarSenha.addEventListener('click', function() {
-        if (mostrarSenha.checked) {
-            senha.type = 'text';
-        } 
-        
-        else {
-            senha.type = 'password';
-        }
-    });
-
-</script>
 
 <!--tutorial como fazer mensagem de erro: https://youtu.be/k7iMlH5YyK8?si=ZiaDmL6m7rjyIRq3-->
