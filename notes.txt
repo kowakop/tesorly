@@ -31,7 +31,7 @@
 -> cartão de fidelidade | empresário vai marcar que o cliente foi e vai ser marcado nesse cartão, se o empresário ativar a funcionalidade, o cliente ganha um pacote x grátis após qtd. x de dias
 
 * SISTEMA DE AGENDAMENTOS:
--> importar uma agenda, de forma que dê para marcar hórario e dia | cliente marcou, apareceu pro usuário | fazer em formato de lista pro usuário
+-> importar uma agenda, de forma que dê para marcar hórario e dia | cliente marcou, apareceu pro empresário | fazer em formato de lista pro usuário
 
 * CONTROLE DE VENDAS :
 -> 
