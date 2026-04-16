@@ -8,10 +8,12 @@
 </head>
 <body>
 
+    <!-- html de login pronto -->
+
     <header>
         <img src="logo_sarolau.png" alt="Logo Sarolau">
         <h1>Equipe Sarolau</h1>
-        <button>◀️</button>
+        <button><a href="index.html">◀️</a></button>
     </header>
 
     <img src="user_logo.png" alt="Logo de Usuário" id="user-logo">
@@ -21,33 +23,41 @@
 
         <div class="form-content">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" placeholder="exemplo@gmail.com">
         </div>
 
         <div class="form-content">
             <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha">
+            <input type="password" id="senha" name="senha" placeholder="coloque sua senha">
         </div>
         
         <div class="form-content">
             <div class="mostrarSenha">
                 <input type="checkbox" id="mostrar-senha" name="mostrar-senha">
-                <label for="mostrar-senha">Mostrar Senha</label>
+                <label for="mostrar-senha">Mostrar Senha</label> 
+                <!-- transformar em olho -->
             </div> 
+
+            <div>
+                <input type="checkbox" id="lembrar-senha" name="lembrar-senha">
+                <label for="lembrar-senha">Lembrar Senha</label>
+                <!-- usar cookies aqui -->
+            </div>
         </div>
 
         <div class="registro">
             <p>Não tem uma conta? <a href="cadastro.html">Registre-se</a></p>
         </div>
 
+        <!-- ver integração pra confirmar por email ou outro método -->
         <div class="password">
-            <p>Esqueci a senha</p>
+            <a href="rec_senha.html">Esqueci a senha</a>
         </div>
 
+
+        <!-- pra entrar vai precisar de uma condição pra saber se vai entrar na pág de emp ou cliente -->
         <button type="submit">Entrar</button>
     </form>
-        
-        <!--dps transformar em um olhinho, vcs que sabem | acho q dá pra importar-->
 
 </body>
 </html>
