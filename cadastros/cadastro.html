@@ -107,5 +107,14 @@ else {
         <input type="submit" value="Cadastrar" id="cadastro">
     </form>
 
+    <!-- Script para redirecionar ao clicar no checkbox -->
+    <script>
+        document.getElementById('sou_emp').onclick = function() {
+        if (this.checked) {
+        window.location.href = 'cad_emp.html';
+        }
+    };
+    </script>
+
 </body>
 </html>

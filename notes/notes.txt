@@ -46,5 +46,5 @@
 * CONTROLE DE CLIENTES :
 -> lista com nomes dos clientes e número de telefone
 
-
+#QUANDO O CLIENTE FIZER LOGIN DEVE SER REDIRECIONADO PARA A PÁGINA DE AGENDA COMO PÁG PRINCIPAL
 /// add mais coisas dps (se tiver)
