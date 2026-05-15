@@ -57,7 +57,7 @@ return $usuarios;
 function deletarprodutos($conexao, $idprodutos) {
     $sql = "DELETE FROM produtos WHERE idprodutos = ?";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando, 'i', $idproduto);
+    mysqli_stmt_bind_param($comando, 'i', $idprodutos);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou; //true ou false
@@ -117,6 +117,128 @@ $funcionou = mysqli_stmt_execute($comando);
 mysqli_stmt_close($comando);
 return $funcionou;
 }
+
+
+function deletarservicos($conexao, $idservicos) {
+    $sql = "DELETE FROM servicos WHERE idservicos = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando, 'i', $idservicos);
+    $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_close($comando);
+    return $funcionou; //true ou false
+};
+
+function listarservicos($conexao) {
+    $sql = "SELECT * FROM servicos";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+    $lista_servicos = [];
+    while ($servicos = mysqli_fetch_assoc($resultado)) {
+        $lista_servicos[] = $servicos;
+    }
+    mysqli_stmt_close($comando);
+    return $lista_servicos;
+};
+
+function editarservicos($conexao, $nome, $valor, $descricao, $tempo, $fotos, $agenda_idagenda, $idservicos) {
+    $sql = "UPDATE servicos SET nome=?, valor=?, descricao=?, tempo=?, fotos=?, agenda_idagenda=? WHERE idservicos=?";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando,'sssi', $nome, $valor, $descricao, $tempo, $fotos, $agenda_idagenda, $idservicos);
+    $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_close($comando);
+    return $funcionou;
+};
+
+function deletarempresario($conexao, $idempresario) {
+    $sql = "DELETE FROM empresario WHERE idempresario = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando, 'i', $idservicos);
+    $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_close($comando);
+    return $funcionou; //true ou false
+};
+
+function listarempresario($conexao) {
+    $sql = "SELECT * FROM empresario ";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+    $lista_empresario = [];
+    while ($servicos = mysqli_fetch_assoc($resultado)) {
+        $lista_empresario[] = $empresario;
+    }
+    mysqli_stmt_close($comando);
+    return $lista_empresario;
+};
+
+function editarempresario($conexao, $tipo, $diastrabalho, $cidade, $idempresario) {
+    $sql = "UPDATE empresario SET tipo=?, diastrabalho=?, cidade=? WHERE idempresario=?";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando,'sss', $tipo, $diastrabalho, $cidade, $idempresario);
+    $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_close($comando);
+    return $funcionou;
+};
+
+
+function salvarempresario( $conexao,$servico,$valor,$descricao,$tempo,$foto,$agenda_idagenda, ){
+    $sql = "INSERT INTO servicos
+    (servico, valor, descricao, tempo_servico, foto, produto_utilizado)
+    VALUES (?, ?, ?, ?, ?, ?)";
+    $comando = mysqli_prepare($conexao, $sql);
+ mysqli_stmt_bind_param( $comando,'sdssss',$servico,$valor,$descricao,$tempo,$foto,$produto
+    );
+$funcionou = mysqli_stmt_execute($comando);
+mysqli_stmt_close($comando);
+return $funcionou;
+}
+
+function deletaragenda($conexao, $idagenda) {
+    $sql = "DELETE FROM agenda WHERE idagenda = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando, 'i', $idagenda);
+    $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_close($comando);
+    return $funcionou; //true ou false
+};
+
+function listaragenda($conexao) {
+    $sql = "SELECT * FROM agenda ";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+    $lista_agenda = [];
+    while ($agenda = mysqli_fetch_assoc($resultado)) {
+        $lista_agenda[] = $agenda;
+    }
+    mysqli_stmt_close($comando);
+    return $lista_agenda;
+};
+
+function editaragenda($conexao, $horario, $dia, $agenda_idusuario, $idagenda) {
+    $sql = "UPDATE agenda SET horario=?, dia=?, agenda_idusuario=? WHERE idempresario=?";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando,'sss', $tipo, $diastrabalho, $cidade, $idempresario);
+    $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_close($comando);
+    return $funcionou;
+};
+
+
+function salvarempresario( $conexao,$servico,$valor,$descricao,$tempo,$foto,$agenda_idagenda, ){
+    $sql = "INSERT INTO servicos
+    (servico, valor, descricao, tempo_servico, foto, produto_utilizado)
+    VALUES (?, ?, ?, ?, ?, ?)";
+    $comando = mysqli_prepare($conexao, $sql);
+ mysqli_stmt_bind_param( $comando,'sdssss',$servico,$valor,$descricao,$tempo,$foto,$produto
+    );
+$funcionou = mysqli_stmt_execute($comando);
+mysqli_stmt_close($comando);
+return $funcionou;
+}
+
+
 //---------------------------------------------//
 
 
@@ -133,18 +255,6 @@ function listarVenda($conexao) {
     return $lista_vendas;
 };
 
-
-function salvarUsuario($conexao, $nome, $email, $telefone, $senha){
-    $sql = "INSERT INTO tb_usuario (nome, email, telefone, senha) 
-            VALUES (?, ?, ?, ?)";
-    $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando,'ssss',$nome,$email, $telefone, $senha);
-    $funcionou = mysqli_stmt_execute($comando);
-    mysqli_stmt_close($comando);
-    return $funcionou;
-}
-
-
 function salvarVenda($conexao, $idcliente, $idproduto, $valor_total, $data ){
     $sql= "INSERT INTO tb_venda (idcliente, idproduto, valor_total, data) VALUES (?,?,?,?)";
     $comando = mysqli_prepare($conexao, $sql);
@@ -153,9 +263,7 @@ function salvarVenda($conexao, $idcliente, $idproduto, $valor_total, $data ){
     mysqli_stmt_close($comando);
     return $funcionou;
 };
-<?php
-
-
 ?>
 
-?>
+
+
