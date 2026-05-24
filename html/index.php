@@ -640,7 +640,7 @@ body > p         { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
 </style>
 
 </head>
-<body
+<body>
 
     <!-- Seguindo o figma, index tá pronto. só add img e css-->
     <header>
@@ -650,8 +650,8 @@ body > p         { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
         <nav>
             <ul>
                 <li><a href="#home">Sobre o Site</a></li>
-                <li><a href="login.html">Sobre Sarolau</a></li>
-                <li><a href="cadastro.html">Suporte</a></li>
+                <li><a href="../login.html">Sobre Sarolau</a></li>
+                <li><a href="../cadastros/cadastro.html">Suporte</a></li>
             </ul>
 
             <div id="socials">
@@ -665,8 +665,8 @@ body > p         { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
     <img src="./imagens/tesorly.png" alt="logo tesorly" id="logo">
     <p>Pare de perder tempo! Faça parte do Tesorly e torne-se mais produtivo.</p>
 
-    <button id="btn_entrar"> <a href="login.html">Entrar</a></button>
-    <button id="btn_cad"><a href="cadastros/cadastro.html">Cadastrar</a></button>
+    <button id="btn_entrar"> <a href="../login.html">Entrar</a></button>
+    <button id="btn_cad"><a href="./cadastros/cadastro.html">Cadastrar</a></button>
 
     <img src="./imagens/banner.png" alt="Banner">
 
