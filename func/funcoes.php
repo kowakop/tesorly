@@ -105,13 +105,6 @@ function listarprodutos($conexao) {
     return $lista_produtos;
 };
 
-function salvarprodutos($conexao, $nome, $marca, $fotos, $empresario_idempresario){
-    $caminhoFoto = uploadImg($arquivo);
-
-    if (!$caminhoFoto){
-        return false;
-    }
-
 function salvarprodutos($conexao, $nome, $marca, $fotos, $empresario_idempresario) {
     $sql = "INSERT INTO produtos (nome, marca, fotos, empresario_idempresario) VALUES (?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);

@@ -1,8 +1,5 @@
-
 <?php
-
 session_start();
-
 require_once "./conexao.php";
 
 $id = $_GET['id']  ?? 0;
@@ -21,10 +18,6 @@ $fotos =  trim($_POST['fotos'] ?? '');
     //⠉⠙⠫⠤⠚⠉⠀⠀⠀⠀⠉⠓⠤⠝⠋⠉ 
 
 //--------------------VALIDAÇÕES-----------------------//
-
-if (isset($_GET['e']) && $_GET['e'] != NULL) {
-    $erro = $_GET['e'];
-    echo "<span id='erro'>";
 
 if (
     $nome == "" ||
@@ -52,30 +45,23 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
-//--------------------EDITAR USER-----------------------//
+//--------------------VERIFICAR DUPLICAÇÃO-----------------------//
 // ⡤⠒⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⢤
 //⢣⡀⠀⠉⠲⢤⣀⡀⠀⠀⠀⠀⠀⠀⢀⣀⡤⠖⠉⠀⢀⡜
 //⢸⡉⠒⠄⠀⠀⠀⢉⡙⢢⠀⠀⡔⢋⡉⠀⠀⠀⠠⠒⢉⡇
   //⠉⢖⠒⠀⠀⠀⣇⠀⣸⠀⠀⣇⠀⣸⠀⠀⠀⠒⡲⠉⠀
     //⠉⠙⠫⠤⠚⠉⠀⠀⠀⠀⠉⠓⠤⠝⠋⠉ 
 
-//--------------------EDITAR USER-----------------------//
+//--------------------VERIFICAÇÃO DE DUPLICAÇÃO-----------------------//
 
+//ฅ(ᵔ꒳ ᵔマ.ᐟ EMAIL
 if ($id != 0) {
-    // verifica email duplicado
-    $sql = "SELECT idusuarios
-            FROM usuarios
-            WHERE user_email = ?
-            AND idusuarios != ?";
+    $sql = "SELECT idusuarios FROM usuarios WHERE user_email = ? AND idusuarios != ?";
 
     $comando = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param(
-        $comando,
-        "si",
-        $email,
-        $id
+    mysqli_stmt_bind_param($comando, "si", $email, $id
     );
+
     mysqli_stmt_execute($comando);
     $resultado = mysqli_stmt_get_result($comando);
     if (mysqli_fetch_assoc($resultado)) {
@@ -83,19 +69,11 @@ if ($id != 0) {
         exit();
     }
 
-    // verifica username duplicado
-    $sql = "SELECT idusuarios
-            FROM usuarios
-            WHERE user_nome = ?
-            AND idusuarios != ?";
+//ฅ(ᵔ꒳ ᵔマ.ᐟ NAME
+    $sql = "SELECT idusuarios FROM usuarios WHERE user_nome = ? AND idusuarios != ?";
 
     $comando = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param(
-        $comando,
-        "si",
-        $user_nome,
-        $id
+    mysqli_stmt_bind_param($comando, "si", $user_nome, $id
     );
 
     mysqli_stmt_execute($comando);
@@ -106,6 +84,38 @@ if ($id != 0) {
         exit();
     }
 
+//ฅ(ᵔ꒳ ᵔマ.ᐟ TEL
+    $sql = "SELECT idusuarios FROM usuarios WHERE user_telefone = ? AND idusuarios != ?";
+
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando, "si", $user_telefone, $id
+    );
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    if (mysqli_fetch_assoc($resultado)) {
+        header("Location: index.php?e=12");
+        exit();
+    }
+
+//ฅ(ᵔ꒳ ᵔマ.ᐟ CRIPTOGRAFAR SENHA
+    $senha_hash = password_hash(
+        $senha, PASSWORD_DEFAULT
+    );
+
+//--------------------CÓDIGO DE ERRO SIMPLES-----------------------//
+// ⡤⠒⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⢤
+//⢣⡀⠀⠉⠲⢤⣀⡀⠀⠀⠀⠀⠀⠀⢀⣀⡤⠖⠉⠀⢀⡜
+//⢸⡉⠒⠄⠀⠀⠀⢉⡙⢢⠀⠀⡔⢋⡉⠀⠀⠀⠠⠒⢉⡇
+  //⠉⢖⠒⠀⠀⠀⣇⠀⣸⠀⠀⣇⠀⣸⠀⠀⠀⠒⡲⠉⠀
+    //⠉⠙⠫⠤⠚⠉⠀⠀⠀⠀⠉⠓⠤⠝⠋⠉ 
+
+//--------------------CÓDIGO DE ERRO SIMPLES-----------------------//
+
+if (isset($_GET['e']) && $_GET['e'] != NULL)
+    $erro = $_GET['e'];
+    echo "<span id='erro'>";
 
     if ($erro == 1) {
         echo "*Você precisa preencher todos os campos";
@@ -114,18 +124,6 @@ if ($id != 0) {
     //pensar em uma frase melhor (qnd o bloco de confirmar a senha não confere com a senha)
     else if ($erro == 2) {
         echo "*Confirmação da senha não confere";
-    }
-
-    else if ($erro == 3) {
-        echo "*Senha maior que 30 caracteres";
-    } 
-
-    else if ($erro == 4) {
-        echo "*Email muito grande";
-    } 
-
-    else if ($erro == 5) {
-        echo "*Email inválido";
     }
 
     else if ($erro == 6) {
@@ -167,5 +165,8 @@ if ($id != 0) {
             }
         </style>';
 }
+
+header("Location: ./index.php");
+exit();
 
 ?>
