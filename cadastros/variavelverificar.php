@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
         if ($_SESSION['tipo'] == "admin" || $_SESSION['id'] == $id) {
             require_once "../conexao.php";
 
-            $sql = "SELECT * FROM usuario WHERE usuario_id = ?";
+            $sql = "SELECT * FROM usuarios WHERE idusuarios = ?";
             $comando = mysqli_prepare($conexao, $sql);
     
             mysqli_stmt_bind_param($comando, 'i', $id);
@@ -19,11 +19,11 @@ if (isset($_GET['id'])) {
     
             $usuario = mysqli_fetch_assoc($resultados);
     
-            $nick = $usuario['usuario_nick'];
-            $nome = $usuario['usuario_nome'];
-            $nascimento = $usuario['usuario_data_nasc'];
-            $email = $usuario['usuario_email'];
-            $senha = $usuario['usuario_senha'];
+            $nome = $usuario['user_nome'];
+            $email = $usuario['user_email'];
+            $senha = $usuario['user_senha'];
+            $telefone = $usuario['user_telefone'];
+            $fotos = $usuario['user_fotos'];
             $editar_tipo = $usuario['usuario_tipo'];
 
         }
@@ -33,13 +33,13 @@ if (isset($_GET['id'])) {
 else {
     
     $id = 0;
-    $nick = "";
     $nome = "";
     $email = "";
-    $nascimento = "";
     $senha = "";
+    $telefone = "";
+    $fotos = "";
 }
 
-<!--editar as variaveis dps que fizer o banco. Isso daí é pra diferenciar empresário de cliente na hora do cadastro-->
+// (eu acho) Isso daí é pra diferenciar empresário de cliente na hora do cadastro-->
 
 ?>

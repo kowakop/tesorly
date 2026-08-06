@@ -1,3 +1,8 @@
+<?php
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +37,7 @@
             <label for="name">Cidade</label>
             <input type="text" id="cidade" name="cidade">
         </div>
+        
         <!-- IMPORTAR!!!!!! -->
         
         <div class="form-content">
