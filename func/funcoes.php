@@ -11,8 +11,6 @@
 //--------------------USERS-----------------------//
 
     function deletaruser($conexao, $idusuarios) {
-
-    function deletarusuarios($conexao, $idusuarios) {
         $sql = "DELETE FROM usuarios WHERE idusuarios = ?";
         $comando = mysqli_prepare($conexao, $sql);
         mysqli_stmt_bind_param($comando, 'i', $idusuarios);
@@ -22,7 +20,6 @@
     };
 
 function listaruser($conexao) {
-function listarusuarios($conexao) {
     $sql = "SELECT * FROM usuarios";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_execute($comando);
@@ -39,12 +36,12 @@ function listarusuarios($conexao) {
 
 //string s numero i
 function salvaruser($conexao, $nome, $email, $senha, $telefone, $fotos) {
-    $lista_usuarios = [];
+    $listar_usuarios = [];
     while ($usuarios = mysqli_fetch_assoc($resultado)) {
-        $lista_usuarios[] = $usuarios;
+        $listar_usuarios[] = $usuarios;
     }
     mysqli_stmt_close($comando);
-    return $lista_usuarios;
+    return $listar_usuarios;
 }
 //string s numero i
 function salvarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos) {
@@ -56,8 +53,7 @@ function salvarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos) {
     return $funcionou;
 };
 
-function editaruser($conexao, $nome, $email, $senha, $telefone, $fotos, $idusuarios) {
-function editarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos, $idusuarios) {
+function editaruser($conexao, $nome, $email, $senha, $telefone, $fotos, $idusuarios){
     $sql = "UPDATE usuarios SET nome=?, email=?, senha=?, telefone=?, fotos=? WHERE idusuarios=?";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($comando, 'sssss', $nome, $email, $senha, $telefone, $fotos, $idusuarios);
@@ -66,23 +62,17 @@ function editarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos, $idu
     return $funcionou;
 };
 
-<<<<<<<< HEAD:func/funcoes.php
 function pesquisaruserid($conexao, $idusuarios){
-========
-function pesquisarusuariosId($conexao, $idusuarios){
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
-$sql = "SELECT * FROM usuarios WHERE idusuarios =?";
-$comando = mysqli_prepare($conexao, $sql);
-mysqli_stmt_bind_param($comando, 'i', $idusuarios);
-mysqli_stmt_execute($comando);
-$resultado = mysqli_stmt_get_result($comando);
-$usuarios = mysqli_fetch_assoc($resultado);
-mysqli_stmt_close($comando);
-return $usuarios;
+    $sql = "SELECT * FROM usuarios WHERE idusuarios =?";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando, 'i', $idusuarios);
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+    $usuarios = mysqli_fetch_assoc($resultado);
+    mysqli_stmt_close($comando);
+    return $usuarios;
 };
 
-
-<<<<<<<< HEAD:func/funcoes.php
 //--------------------PRODUTOS-----------------------//
 // ⡤⠒⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⢤
 //⢣⡀⠀⠉⠲⢤⣀⡀⠀⠀⠀⠀⠀⠀⢀⣀⡤⠖⠉⠀⢀⡜
@@ -93,8 +83,6 @@ return $usuarios;
 //--------------------PRODUTOS-----------------------//
 
 
-========
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
 function deletarprodutos($conexao, $idprodutos) {
     $sql = "DELETE FROM produtos WHERE idprodutos = ?";
     $comando = mysqli_prepare($conexao, $sql);
@@ -117,8 +105,6 @@ function listarprodutos($conexao) {
     return $lista_produtos;
 };
 
-
-<<<<<<<< HEAD:func/funcoes.php
 function salvarprodutos($conexao, $nome, $marca, $fotos, $empresario_idempresario){
     $caminhoFoto = uploadImg($arquivo);
 
@@ -126,9 +112,7 @@ function salvarprodutos($conexao, $nome, $marca, $fotos, $empresario_idempresari
         return false;
     }
 
-========
 function salvarprodutos($conexao, $nome, $marca, $fotos, $empresario_idempresario) {
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
     $sql = "INSERT INTO produtos (nome, marca, fotos, empresario_idempresario) VALUES (?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($comando,'sssi', $nome, $marca, $fotos, $empresario_idempresario);
@@ -147,17 +131,15 @@ function editarprodutos($conexao, $nome, $marca, $fotos, $empresario_idempresari
 };
 
 function pesquisarprodutosId($conexao,$idprodutos) {
-$sql = "SELECT * FROM produtos WHERE idprodutos =?";
-$comando = mysqli_prepare($conexao, $sql);
-mysqli_stmt_bind_param($comando, 'i', $idprodutos);
-mysqli_stmt_execute($comando);
-$resultado = mysqli_stmt_get_result($comando);
-$produtos = mysqli_fetch_assoc($resultado);
-mysqli_stmt_close($comando);
-return $produtos;
+    $sql = "SELECT * FROM produtos WHERE idprodutos =?";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando, 'i', $idprodutos);
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+    $produtos = mysqli_fetch_assoc($resultado);
+    mysqli_stmt_close($comando);
+    return $produtos;
 };
-
-<<<<<<<< HEAD:func/funcoes.php
 
 //--------------------SERVIÇOS-----------------------//
 // ⡤⠒⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⢤
@@ -170,30 +152,17 @@ return $produtos;
 
 
 function salvarservico( $conexao,$servico,$valor,$descricao,$tempo,$foto,$agenda_idagenda, ){
-========
-function salvarServico( $conexao,$servico,$valor,$descricao,$tempo,$foto,$agenda_idagenda, ){
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
     $sql = "INSERT INTO servicos
     (servico, valor, descricao, tempo_servico, foto, produto_utilizado)
     VALUES (?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-<<<<<<<< HEAD:func/funcoes.php
-mysqli_stmt_bind_param( $comando,'sdssss',$servico,$valor,$descricao,$tempo,$foto,$produto
-========
- mysqli_stmt_bind_param( $comando,'sdssss',$servico,$valor,$descricao,$tempo,$foto,$produto
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
-    );
-$funcionou = mysqli_stmt_execute($comando);
-mysqli_stmt_close($comando);
-return $funcionou;
+    mysqli_stmt_bind_param( $comando,'sdssss',$servico,$valor,$descricao,$tempo,$foto,$produto);
+    $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_close($comando);
+    return $funcionou;
 }
 
-
-<<<<<<<< HEAD:func/funcoes.php
 function deletarservico($conexao, $idservicos) {
-========
-function deletarservicos($conexao, $idservicos) {
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
     $sql = "DELETE FROM servicos WHERE idservicos = ?";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($comando, 'i', $idservicos);
@@ -202,30 +171,17 @@ function deletarservicos($conexao, $idservicos) {
     return $funcionou; //true ou false
 };
 
-<<<<<<<< HEAD:func/funcoes.php
 function listarservico($conexao) {
-========
-function listarservicos($conexao) {
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
     $sql = "SELECT * FROM servicos";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_execute($comando);
     $resultado = mysqli_stmt_get_result($comando);
-<<<<<<<< HEAD:func/funcoes.php
     $listar_servicos = [];
     while ($servicos = mysqli_fetch_assoc($resultado)) {
         $listar_servicos[] = $servicos;
     }
     mysqli_stmt_close($comando);
     return $listar_servicos;
-========
-    $lista_servicos = [];
-    while ($servicos = mysqli_fetch_assoc($resultado)) {
-        $lista_servicos[] = $servicos;
-    }
-    mysqli_stmt_close($comando);
-    return $lista_servicos;
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
 };
 
 function editarservicos($conexao, $nome, $valor, $descricao, $tempo, $fotos, $agenda_idagenda, $idservicos) {
@@ -237,7 +193,6 @@ function editarservicos($conexao, $nome, $valor, $descricao, $tempo, $fotos, $ag
     return $funcionou;
 };
 
-<<<<<<<< HEAD:func/funcoes.php
 
 //--------------------EMPRESÁRIO-----------------------//
 // ⡤⠒⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⢤
@@ -248,8 +203,6 @@ function editarservicos($conexao, $nome, $valor, $descricao, $tempo, $fotos, $ag
 
 //--------------------EMPRESÁRIO-----------------------//
 
-========
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
 function deletarempresario($conexao, $idempresario) {
     $sql = "DELETE FROM empresario WHERE idempresario = ?";
     $comando = mysqli_prepare($conexao, $sql);
@@ -260,7 +213,6 @@ function deletarempresario($conexao, $idempresario) {
 };
 
 function listarempresario($conexao) {
-<<<<<<<< HEAD:func/funcoes.php
     $sql = "SELECT * FROM empresario";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_execute($comando);
@@ -271,18 +223,6 @@ function listarempresario($conexao) {
     }
     mysqli_stmt_close($comando);
     return $listar_empresario;
-========
-    $sql = "SELECT * FROM empresario ";
-    $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_execute($comando);
-    $resultado = mysqli_stmt_get_result($comando);
-    $lista_empresario = [];
-    while ($servicos = mysqli_fetch_assoc($resultado)) {
-        $lista_empresario[] = $empresario;
-    }
-    mysqli_stmt_close($comando);
-    return $lista_empresario;
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
 };
 
 function editarempresario($conexao, $tipo, $diastrabalho, $cidade, $idempresario) {
@@ -295,16 +235,11 @@ function editarempresario($conexao, $tipo, $diastrabalho, $cidade, $idempresario
 };
 
 
-<<<<<<<< HEAD:func/funcoes.php
 function salvarempresario( $conexao, $servico, $valor, $descricao, $tempo, $foto, $agenda_idagenda, ){
-========
-function salvarempresario( $conexao,$servico,$valor,$descricao,$tempo,$foto,$agenda_idagenda, ){
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
     $sql = "INSERT INTO servicos
     (servico, valor, descricao, tempo_servico, foto, produto_utilizado)
     VALUES (?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-<<<<<<<< HEAD:func/funcoes.php
     mysqli_stmt_bind_param( $comando,'sdssss', $servico, $valor, $descricao, $tempo, $foto, $produto
     );
     $funcionou = mysqli_stmt_execute($comando);
@@ -322,15 +257,7 @@ function salvarempresario( $conexao,$servico,$valor,$descricao,$tempo,$foto,$age
 
 //--------------------AGENDA-----------------------//
 
-========
- mysqli_stmt_bind_param( $comando,'sdssss',$servico,$valor,$descricao,$tempo,$foto,$produto
-    );
-$funcionou = mysqli_stmt_execute($comando);
-mysqli_stmt_close($comando);
-return $funcionou;
-}
 
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
 function deletaragenda($conexao, $idagenda) {
     $sql = "DELETE FROM agenda WHERE idagenda = ?";
     $comando = mysqli_prepare($conexao, $sql);
@@ -345,12 +272,12 @@ function listaragenda($conexao) {
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_execute($comando);
     $resultado = mysqli_stmt_get_result($comando);
-    $lista_agenda = [];
+    $listar_agenda = [];
     while ($agenda = mysqli_fetch_assoc($resultado)) {
-        $lista_agenda[] = $agenda;
+        $listar_agenda[] = $agenda;
     }
     mysqli_stmt_close($comando);
-    return $lista_agenda;
+    return $listar_agenda;
 };
 
 function editaragenda($conexao, $horario, $dia, $agenda_idusuario, $idagenda) {
@@ -363,8 +290,6 @@ function editaragenda($conexao, $horario, $dia, $agenda_idusuario, $idagenda) {
 };
 
 
-<<<<<<<< HEAD:func/funcoes.php
-
 //--------------------VENDAS-----------------------//
 // ⡤⠒⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⢤
 //⢣⡀⠀⠉⠲⢤⣀⡀⠀⠀⠀⠀⠀⠀⢀⣀⡤⠖⠉⠀⢀⡜
@@ -376,44 +301,17 @@ function editaragenda($conexao, $horario, $dia, $agenda_idusuario, $idagenda) {
 
 
 function listarvenda($conexao) {
-========
-function salvarempresario( $conexao,$servico,$valor,$descricao,$tempo,$foto,$agenda_idagenda, ){
-    $sql = "INSERT INTO servicos
-    (servico, valor, descricao, tempo_servico, foto, produto_utilizado)
-    VALUES (?, ?, ?, ?, ?, ?)";
-    $comando = mysqli_prepare($conexao, $sql);
- mysqli_stmt_bind_param( $comando,'sdssss',$servico,$valor,$descricao,$tempo,$foto,$produto
-    );
-$funcionou = mysqli_stmt_execute($comando);
-mysqli_stmt_close($comando);
-return $funcionou;
-}
-
-
-//---------------------------------------------//
-
-
-function listarVenda($conexao) {
->>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
     $sql = "SELECT * FROM tb_venda";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_execute($comando);
     $resultado = mysqli_stmt_get_result($comando);
-<<<<<<<< HEAD:func/funcoes.php
     $listar_venda = [];
     while ($venda = mysqli_fetch_assoc($resultado)) {
         $listar_venda[] = $venda;
     }
     mysqli_stmt_close($comando);
     return $listar_venda;
-========
-    $lista_vendas = [];
-    while ($venda = mysqli_fetch_assoc($resultado)) {
-        $lista_vendas[] = $venda;
-    }
-    mysqli_stmt_close($comando);
-    return $lista_vendas;
-};
+}
 
 function salvarVenda($conexao, $idcliente, $idproduto, $valor_total, $data ){
     $sql= "INSERT INTO tb_venda (idcliente, idproduto, valor_total, data) VALUES (?,?,?,?)";
