@@ -1,6 +1,7 @@
 <?php
 
     require_once("./conexao.php");
+<<<<<<<< HEAD:func/funcoes.php
 //--------------------USERS-----------------------//
 // ⡤⠒⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⢤
 //⢣⡀⠀⠉⠲⢤⣀⡀⠀⠀⠀⠀⠀⠀⢀⣀⡤⠖⠉⠀⢀⡜
@@ -11,8 +12,10 @@
 //--------------------USERS-----------------------//
 
     function deletaruser($conexao, $idusuarios) {
+========
 
     function deletarusuarios($conexao, $idusuarios) {
+>>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
         $sql = "DELETE FROM usuarios WHERE idusuarios = ?";
         $comando = mysqli_prepare($conexao, $sql);
         mysqli_stmt_bind_param($comando, 'i', $idusuarios);
@@ -21,12 +24,16 @@
         return $funcionou; //true ou false
     };
 
+<<<<<<<< HEAD:func/funcoes.php
 function listaruser($conexao) {
+========
 function listarusuarios($conexao) {
+>>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
     $sql = "SELECT * FROM usuarios";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_execute($comando);
     $resultado = mysqli_stmt_get_result($comando);
+<<<<<<<< HEAD:func/funcoes.php
     $listar_usuarios = [];
 
     while ($usuarios = mysqli_fetch_assoc($resultado)) {
@@ -39,6 +46,7 @@ function listarusuarios($conexao) {
 
 //string s numero i
 function salvaruser($conexao, $nome, $email, $senha, $telefone, $fotos) {
+========
     $lista_usuarios = [];
     while ($usuarios = mysqli_fetch_assoc($resultado)) {
         $lista_usuarios[] = $usuarios;
@@ -48,6 +56,7 @@ function salvaruser($conexao, $nome, $email, $senha, $telefone, $fotos) {
 }
 //string s numero i
 function salvarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos) {
+>>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
     $sql = "INSERT INTO usuarios (nome, email, senha, telefone, fotos) VALUES (?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($comando, 'sssss', $nome, $email, $senha, $telefone, $fotos);
@@ -56,8 +65,11 @@ function salvarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos) {
     return $funcionou;
 };
 
+<<<<<<<< HEAD:func/funcoes.php
 function editaruser($conexao, $nome, $email, $senha, $telefone, $fotos, $idusuarios) {
+========
 function editarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos, $idusuarios) {
+>>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
     $sql = "UPDATE usuarios SET nome=?, email=?, senha=?, telefone=?, fotos=? WHERE idusuarios=?";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($comando, 'sssss', $nome, $email, $senha, $telefone, $fotos, $idusuarios);
@@ -413,6 +425,7 @@ function listarVenda($conexao) {
     }
     mysqli_stmt_close($comando);
     return $lista_vendas;
+>>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
 };
 
 function salvarVenda($conexao, $idcliente, $idproduto, $valor_total, $data ){
@@ -423,6 +436,7 @@ function salvarVenda($conexao, $idcliente, $idproduto, $valor_total, $data ){
     mysqli_stmt_close($comando);
     return $funcionou;
 };
+<<<<<<<< HEAD:func/funcoes.php
 
 //--------------------LOGIN-----------------------//
 // ⡤⠒⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⢤
@@ -497,4 +511,9 @@ function logout(){
 
         return false;
     }
+========
+>>>>>>>> b2004c2c1a97e48fbec500bbe9cee49936872ab5:html/funcoes/funcoes.php
 ?>
+
+
+
