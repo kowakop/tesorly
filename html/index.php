@@ -645,7 +645,6 @@ body > p         { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
     <!-- Seguindo o figma, index tá pronto. só add img e css-->
     <header>
         <h1>Equipe Sarolau</h1>
-        <h1>alguma coisa aqui</h1>
     </header>
 
         <nav>
@@ -666,8 +665,10 @@ body > p         { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
     <img src="./imagens/tesorly.png" alt="logo tesorly" id="logo">
     <p>Pare de perder tempo! Faça parte do Tesorly e torne-se mais produtivo.</p>
 
-    <button id="btn_entrar"> <a href="../login.html">Entrar</a></button>
-    <button id="btn_cad"><a href="./cadastros/cadastro.html">Cadastrar</a></button>
+    <button id="btn_entrar"> <a href="php/login.php">Entrar</a></button>
+    <button id="btn_cad"><a href="./cadastros/cadastros.php">Cadastrar</a></button>
+
+    <a href="../login.php">teste</a>
 
     <img src="./imagens/banner.png" alt="Banner">
 
