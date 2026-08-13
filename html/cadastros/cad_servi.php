@@ -2,12 +2,14 @@
 
 include("../conexao.php");
 include("../funcoes/funcoes.php");
+
 $servico = $_POST['service'];
 $valor = $_POST['valor'];
 $descricao = $_POST['desc'];
 $tempo = $_POST['time'];
 $produto = $_POST['prod'];
 $foto = $_FILES['pic']['name'];
+
 $resultado = salvarservico($conexao, $servico, $valor, $descricao, $tempo, $foto, $produto);
 
 if($resultado){

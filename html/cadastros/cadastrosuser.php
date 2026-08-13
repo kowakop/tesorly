@@ -3,6 +3,7 @@
 //include("../conexao.php");
 // include("../func/funcoes.php");
 
+<<<<<<< HEAD:html/cadastros/cadastros.php
 //$nome = $_POST['nome'];
 //$email = $_POST['email'];
 //$telefone = $_POST['telefone'];
@@ -58,6 +59,66 @@
 //}
 //
 ////editar as variaveis dps que fizer o banco. Isso daí é pra diferenciar empresário de cliente na hora do cadastro
+=======
+$nome = $_POST['nome'];
+$email = $_POST['email'];
+$senha = $_POST['senha'];
+$telefone = $_POST['telefone'];
+$fotos = $_POST['fotos'];
+
+
+
+$resultado = salvarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos);
+
+if($resultado){
+    echo "Usuário cadastrado";
+}else{
+    echo "Erro ao cadastrar";
+}
+
+session_start();
+
+if (isset($_GET['id'])) {
+
+    $id = $_GET['id'];
+
+    if (isset($_SESSION['tipo'])) {
+        if ($_SESSION['tipo'] == "admin" || $_SESSION['id'] == $id) {
+            require_once "../conexao.php";
+
+            $sql = "SELECT * FROM usuario WHERE usuario_id = ?";
+            $comando = mysqli_prepare($conexao, $sql);
+    
+            mysqli_stmt_bind_param($comando, 'i', $id);
+            mysqli_stmt_execute($comando);
+    
+            $resultados = mysqli_stmt_get_result($comando);
+    
+            $usuario = mysqli_fetch_assoc($resultados);
+    
+            $nick = $usuario['usuario_nick'];
+            $nome = $usuario['usuario_nome'];
+            $nascimento = $usuario['usuario_data_nasc'];
+            $email = $usuario['usuario_email'];
+            $senha = $usuario['usuario_senha'];
+            $editar_tipo = $usuario['usuario_tipo'];
+
+        }
+
+    }
+}
+else {
+    
+    $id = 0;
+    $nick = "";
+    $nome = "";
+    $email = "";
+    $nascimento = "";
+    $senha = "";
+};
+
+//editar as variaveis dps que fizer o banco. Isso daí é pra diferenciar empresário de cliente na hora do cadastro
+>>>>>>> 93908c6c967f8a57318604bcc2f208aa9141064a:html/cadastros/cadastrosuser.php
 
 ?>
 

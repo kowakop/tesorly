@@ -2,10 +2,16 @@
 
 include("../conexao.php");
 include("../funcoes/funcoes.php");
+
 $nome = $_POST['nome'];
 $marca = $_POST['marca'];
-$foto = $_FILES['pic']['name'];
-$resultado = salvarprodutos($conexao, $nome, $marca, $fotos);
+$fotos = $_POST['fotos'];
+$empresario_idempresario = $_POST['empresario'];
+
+
+
+
+$resultado = salvarprodutos($conexao, $nome, $marca, $fotos, $empresario_idempresario);
 
 if($resultado){
     echo "produto cadastrado";
@@ -37,8 +43,8 @@ if($resultado){
     <form action="arquivo.php" method="post" enctype="multipart/form-data">
 
         <div class="form-content">
-            <label for="produto"> oferecido:</label>
-            <input type="text" id="service" name="service">
+            <label for="produto"> produto:</label>
+            <input type="text" id="produto" name="produto">
         </div>
 
         <div class="form-content">

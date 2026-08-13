@@ -36,12 +36,12 @@ function listaruser($conexao) {
 
 //string s numero i
 function salvaruser($conexao, $nome, $email, $senha, $telefone, $fotos) {
-    $listar_usuarios = [];
-    while ($usuarios = mysqli_fetch_assoc($resultado)) {
-        $listar_usuarios[] = $usuarios;
-    }
+    $sql = "INSERT INTO usuarios (nome, email, senha, telefone, fotos) VALUES (?, ?, ?, ?,?)";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando, 'ssii',$nome, $email, $senha, $telefone, $fotos);
+    $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
-    return $listar_usuarios;
+    return $funcionou;
 }
 //string s numero i
 function salvarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos) {
@@ -211,7 +211,7 @@ function listarempresario($conexao) {
     mysqli_stmt_execute($comando);
     $resultado = mysqli_stmt_get_result($comando);
     $listar_empresario = [];
-    while ($servicos = mysqli_fetch_assoc($resultado)) {
+    while ($empresario = mysqli_fetch_assoc($resultado)) {
         $listar_empresario[] = $empresario;
     }
     mysqli_stmt_close($comando);
