@@ -5,10 +5,13 @@ include("../funcoes/funcoes.php");
 
 $nome = $_POST['nome'];
 $email = $_POST['email'];
-$telefone = $_POST['telefone'];
 $senha = $_POST['senha'];
+$telefone = $_POST['telefone'];
+$fotos = $_POST['fotos'];
 
-$resultado = salvarusuarios($conexao, $nome, $email, $senha, $telefone);
+
+
+$resultado = salvarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos);
 
 if($resultado){
     echo "Usuário cadastrado";
