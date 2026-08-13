@@ -645,6 +645,7 @@ body > p         { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
     <!-- Seguindo o figma, index tá pronto. só add img e css-->
     <header>
         <h1>Equipe Sarolau</h1>
+        <h1>alguma coisa aqui</h1>
     </header>
 
         <nav>

@@ -60,7 +60,7 @@
 
     <!-- Seguindo o figma, index tá pronto. só add img e css-->
     <header>
-        <h1>Equipe Sarolau</h1>
+        <h1>Equipe Sarolauuuuuu</h1>
     </header>
 
         <nav>

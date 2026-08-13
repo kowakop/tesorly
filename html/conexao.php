@@ -2,7 +2,7 @@
     $host = "mysql_lab";
     $user = "root";
     $password = "123";
-    $bd = "mydb";
+    $bd = "banco";
     
     $conexao = new mysqli($host, $user, $password, $bd);
 
@@ -11,4 +11,5 @@
     }
 
     echo "Conectado com sucesso";
+    
 ?>
