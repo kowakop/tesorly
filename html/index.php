@@ -658,6 +658,7 @@ body > p         { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
                 <a href="https://www.instagram.com/tesorly/"><img src="./imagens/instagram.png" alt="Instagram"></a>
                 <a href="https://www.github.com/tesorly"><img src="./imagens/github.png" alt="Github"></a>
                 <a href="https://www.twitter.com/tesorly"><img src="./imagens/twitter.png" alt="Twitter"></a>
+                <a href="agendamento/agendaprincipal.php"><img src="./imagens/twitter.png" alt="Twitter"></a>
             </div>
         </nav>
 

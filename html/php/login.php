@@ -262,55 +262,39 @@ body > h1 {
 
     <!-- html de login pronto -->
 
-    <header>
-        <img src="logo_sarolau.png" alt="Logo Sarolau">
-        <h1>Equipe Sarolau</h1>
-        <button><a href="../index.php">◀️</a></button>
-    </header>
+    <?php
+session_start();
+require_once "funcoes.php";
 
-    <img src="user_logo.png" alt="Logo de Usuário" id="user-logo">
-    <h1>Seja bem-vindo(a) de volta!</h1>
+if (isset($_POST['enviar'])){
 
-    <form action="" method="post" id="form">
+    $cpf = $_POST['email']??'';
+    $senha = $_POST['senha']??'';
 
-        <div class="form-content">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="exemplo@gmail.com">
-        </div>
+    $sucesso = login($conexao, $email, $senha);
 
-        <div class="form-content">
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" placeholder="coloque sua senha">
-        </div>
-        
-        <div class="form-content">
-            <div class="mostrarSenha">
-                <input type="checkbox" id="mostrar-senha" name="mostrar-senha">
-                <label for="mostrar-senha">Mostrar Senha</label> 
-                <!-- transformar em olho -->
-            </div> 
+    if ($sucesso === true){
+        header("Location: index.php");
+        exit;
+    } elseif($sucesso === false){
+        echo "Email ou senha incorretos.";
+    } elseif($sucesso === "erro"){
+        echo "Ocorreu um erro ao realizar o login.";
+    }
 
-            <div>
-                <input type="checkbox" id="lembrar-senha" name="lembrar-senha">
-                <label for="lembrar-senha">Lembrar Senha</label>
-                <!-- usar cookies aqui -->
-            </div>
-        </div>
+}
+?>
 
-        <div class="registro">
-            <p>Não tem uma conta? <a href="../cadastros/cadastros.php">Registre-se</a></p>
-        </div>
-
-        <!-- ver integração pra confirmar por email ou outro método -->
-        <div class="password">
-            <a href="rec_senha.html">Esqueci a senha</a>
-        </div>
-
-
-        <!-- pra entrar vai precisar de uma condição pra saber se vai entrar na pág de emp ou cliente -->
-        <button type="submit">Entrar</button>
+<body>
+    <form method="POST">
+        <h3>Login</h3>
+        <label>CPF:</label>
+        <input type="text" name="cpf" required><br><br>
+        <label>Senha:</label>
+        <input type="password" name="senha" required><br><br>
+        <button type="submit" name="enviar">Login</button>
     </form>
-
+    
 </body>
 </html>
 

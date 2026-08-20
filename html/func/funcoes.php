@@ -9,8 +9,16 @@
     //⠉⠙⠫⠤⠚⠉⠀⠀⠀⠀⠉⠓⠤⠝⠋⠉ 
 
 //--------------------USERS-----------------------//
+function verificarLogin(){
+    // return isset($_SESSION['usuario']);
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: ../php/login.php");
+    exit;
+    }
+}
+   
 
-    function deletaruser($conexao, $idusuarios) {
+function deletaruser($conexao, $idusuarios) {
         $sql = "DELETE FROM usuarios WHERE idusuarios = ?";
         $comando = mysqli_prepare($conexao, $sql);
         mysqli_stmt_bind_param($comando, 'i', $idusuarios);
