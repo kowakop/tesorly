@@ -51,15 +51,6 @@ function salvaruser($conexao, $nome, $email, $senha, $telefone, $fotos) {
     mysqli_stmt_close($comando);
     return $funcionou;
 }
-//string s numero i
-function salvarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos) {
-    $sql = "INSERT INTO usuarios (nome, email, senha, telefone, fotos) VALUES (?, ?, ?, ?, ?)";
-    $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando, 'sssss', $nome, $email, $senha, $telefone, $fotos);
-    $funcionou = mysqli_stmt_execute($comando);
-    mysqli_stmt_close($comando);
-    return $funcionou;
-};
 
 function editaruser($conexao, $nome, $email, $senha, $telefone, $fotos, $idusuarios){
     $sql = "UPDATE usuarios SET nome=?, email=?, senha=?, telefone=?, fotos=? WHERE idusuarios=?";

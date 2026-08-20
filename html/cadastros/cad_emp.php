@@ -7,10 +7,6 @@ $tipo = $_POST['tipo'];
 $dias_trab = $_POST['dias_trab'];
 $cidade = $_POST['cidade'];
 
-
-
-
-
 $resultado = salvarempresario($conexao, $tipo, $dias_trab, $cidade);
 
 if($resultado){
@@ -18,9 +14,7 @@ if($resultado){
 }else{
     echo "Erro ao cadastrar";
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

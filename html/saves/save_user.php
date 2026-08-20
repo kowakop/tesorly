@@ -21,12 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    // 4. Validação: Verifica se as senhas batem
-    if ($senha_pura !== $confirmar_senha) {
-        echo "<script>alert('As senhas não coincidem!'); window.history.back();</script>";
-        exit;
-    }
-
     // 5. Criptografia da senha (Perfeito, igual você fez!)
     $senha_criptografada = password_hash($senha_pura, PASSWORD_DEFAULT);
 
@@ -49,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Executa e verifica o resultado
         if (mysqli_stmt_execute($comando)) {
-            echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href='index.php';</script>";
+            echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href='../agendamento/agendaprincipal.php';</script>";
         } else {
             echo "Erro ao salvar no banco: " . mysqli_stmt_error($comando);
         }
