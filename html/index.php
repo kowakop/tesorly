@@ -659,6 +659,7 @@ body > p         { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
                 <a href="https://www.github.com/tesorly"><img src="./imagens/github.png" alt="Github"></a>
                 <a href="https://www.twitter.com/tesorly"><img src="./imagens/twitter.png" alt="Twitter"></a>
                 <a href="agendamento/agendaprincipal.php"><img src="./imagens/twitter.png" alt="Twitter"></a>
+                <a href="cadastros/cad_prod.php"><img src="./imagens/twitter.png" alt="Twitter"></a>
             </div>
         </nav>
 
@@ -667,7 +668,7 @@ body > p         { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
     <p>Pare de perder tempo! Faça parte do Tesorly e torne-se mais produtivo.</p>
 
     <button id="btn_entrar"> <a href="login.php">Entrar</a></button>
-    <button id="btn_cad"><a href="./cadastros/cadastros.php">Cadastrar</a></button>
+    <button id="btn_cad"><a href="cadastros/cadastrosuser.php">Cadastrar</a></button>
 
     <a href="../login.php">teste</a>
 

@@ -1,65 +1,61 @@
 <?php
-
-include("../conexao.php");
-include("../funcoes/funcoes.php");
-
-$nome = $_POST['nome'];
-$marca = $_POST['marca'];
-$fotos = $_POST['fotos'];
-$empresario_idempresario = $_POST['empresario'];
+session_start();
+require_once '../funcoes.php';
 
 
+if (isset($_POST['enviar'])) {
+    // Obter e remover espaços em branco das extremidades
+    $nome = $_POST['prod_nome'] ?? '';
+    $marca = $_POST['prod_marca'] ?? '';
+    $empresarioid = $_POST['empresario_idempresario']?? '';
+    $fotos = $_FILES['prod_fotos'] ?? null;
 
+    $nomeArquivo = uploadImg($_FILES['prod_fotos']);
 
-$resultado = salvarprodutos($conexao, $nome, $marca, $fotos, $empresario_idempresario);
-
-if($resultado){
-    echo "produto cadastrado";
-}else{
-    echo "Erro ao cadastrar";
+if ($nomeArquivo === false) {
+    echo "Erro no upload da imagem. Verifique o formato (jpg, png, webp) e o tamanho (até 5MB).";
+} else {
+    $sucesso = salvarprodutos($conexao, $nome, $marca, $nomeArquivo, $empresarioid);
 }
-
+    if ($sucesso) {
+        echo "Produto cadastrado com sucesso!";
+    } else {
+        echo "Erro no cadastro do produto. Verifique a imagem ou a conexão.";
+    }
+    
+}
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <title>Cadastro de Produtos</title>
-</head>
-<body>
+<form method="POST" enctype="multipart/form-data">
+    <p>
+        <label>Nome: </label><br>
+        <input type="text" name="prod_nome" required>
+    </p>
+    <p>
+        <label>Marca: </label><br>
+        <input type="text" name="prod_marca" required> 
+    </p>
+    <p>
+        <label>Selecione o empresário: </label><br>
+        <input type="number" name="empresario_idempresario" required> 
+    </p>
+    <p>
+        <label>Foto do Produto: </label><br>
+        <input type="file" name="prod_fotos" accept="image/*" required>
+    </p>
+    <button type="submit" name="enviar">Enviar Imagem</button>
+</form>
 
-    <p>Equipe Sarolau</p>
+<br><br>
+
+<?php
+
+echo "<h3>Deletar Livros</h3>";
+$deletado = deletarprodutos($conexao, 1);
+if($deletado){
+    echo"Produto deletado com sucesso.";
+}else{
+    echo "Erro ao deletar produto. Verifique se o produto está cadastrado.";
+}
     
-    <button><a href="index.html">◀️</a></button>
-
-    <img src="logo_tesorly.png" alt="Logo Tesorly">
-
-    <img src="foto.png" alt="foto produtos">
-
-    <form action="arquivo.php" method="post" enctype="multipart/form-data">
-
-        <div class="form-content">
-            <label for="produto"> produto:</label>
-            <input type="text" id="produto" name="produto">
-        </div>
-
-        <div class="form-content">
-            <label for="valor">Valor:</label>
-            <input type="number" id="valor" name="valor">
-        </div>
-
-        <div class="form-content">
-            <label for="pic">Fotos:</label>
-            <input type="file" id="pic" name="pic">
-        </div>
-
-
-        <input type="submit" value="Adicionar Produto" id="add_prod"><a href="cad_prod.html">Adicionar Produto</a>
-        <input type="submit" value="Finalizar Cadastro" id="cadastro">
-    </form>
-</body>
-</html>
+?>

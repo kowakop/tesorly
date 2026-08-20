@@ -114,7 +114,7 @@ function listarprodutos($conexao) {
 };
 
 function salvarprodutos($conexao, $nome, $marca, $fotos, $empresario_idempresario) {
-    $sql = "INSERT INTO produtos (nome, marca, fotos, empresario_idempresario) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO produtos (prod_nome, prod_marca, prod_fotos, empresario_idempresario) VALUES (?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($comando,'sssi', $nome, $marca, $fotos, $empresario_idempresario);
     $funcionou = mysqli_stmt_execute($comando);
