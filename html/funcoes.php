@@ -17,7 +17,6 @@ function verificarLogin(){
     }
 }
    
-
 function deletaruser($conexao, $idusuarios) {
         $sql = "DELETE FROM usuarios WHERE idusuarios = ?";
         $comando = mysqli_prepare($conexao, $sql);
@@ -51,15 +50,6 @@ function salvaruser($conexao, $nome, $email, $senha, $telefone, $fotos) {
     mysqli_stmt_close($comando);
     return $funcionou;
 }
-//string s numero i
-function salvarusuarios($conexao, $nome, $email, $senha, $telefone, $fotos) {
-    $sql = "INSERT INTO usuarios (nome, email, senha, telefone, fotos) VALUES (?, ?, ?, ?, ?)";
-    $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando, 'sssss', $nome, $email, $senha, $telefone, $fotos);
-    $funcionou = mysqli_stmt_execute($comando);
-    mysqli_stmt_close($comando);
-    return $funcionou;
-};
 
 function editaruser($conexao, $nome, $email, $senha, $telefone, $fotos, $idusuarios){
     $sql = "UPDATE usuarios SET nome=?, email=?, senha=?, telefone=?, fotos=? WHERE idusuarios=?";
@@ -114,7 +104,7 @@ function listarprodutos($conexao) {
 };
 
 function salvarprodutos($conexao, $nome, $marca, $fotos, $empresario_idempresario) {
-    $sql = "INSERT INTO produtos (nome, marca, fotos, empresario_idempresario) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO produtos (prod_nome, prod_marca, prod_fotos, empresario_idempresario) VALUES (?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($comando,'sssi', $nome, $marca, $fotos, $empresario_idempresario);
     $funcionou = mysqli_stmt_execute($comando);
@@ -152,12 +142,12 @@ function pesquisarprodutosId($conexao,$idprodutos) {
 //--------------------SERVIÇOS-----------------------//
 
 
-function salvarservico( $conexao,$servico,$valor,$descricao,$tempo,$foto ){
-    $sql = "INSERT INTO servicos
-    (servico, valor, descricao, tempo_servico, foto, produto_utilizado)
-    VALUES (?, ?, ?, ?, ?, ?)";
+function salvarservico( $conexao,$servico,$valor,$descricao,$tempo){
+    $sql = "INSERT INTO mydb.servicos
+    (serv_nome, serv_valor, serv_descricao, serv_tempo)
+    VALUES (?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param( $comando,'sdssss',$servico,$valor,$descricao,$tempo,$foto,$produto);
+    mysqli_stmt_bind_param( $comando,'ssss',$servico,$valor,$descricao,$tempo);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;

@@ -1,16 +1,14 @@
 <?php
 
 include("../conexao.php");
-include("../funcoes/funcoes.php");
+include("../funcoes.php");
 
-$servico = $_POST['service'];
+$servico = $_POST['servico'];
 $valor = $_POST['valor'];
-$descricao = $_POST['desc'];
-$tempo = $_POST['time'];
-$produto = $_POST['prod'];
-$foto = $_FILES['pic']['name'];
+$descricao = $_POST['descricao'];
+$tempo = $_POST['tempo'];
 
-$resultado = salvarservico($conexao, $servico, $valor, $descricao, $tempo, $foto, $produto);
+$resultado = salvarservico($conexao, $servico, $valor, $descricao, $tempo);
 
 if($resultado){
     echo "Serviço cadastrado";
@@ -39,11 +37,11 @@ if($resultado){
 
     <img src="foto.png" alt="foto produtos">
 
-    <form action="arquivo.php" method="post" enctype="multipart/form-data">
+    <form action="save_servicos.php" method="POST" enctype="multipart/form-data">
 
         <div class="form-content">
-            <label for="service">Serviço oferecido:</label>
-            <input type="text" id="service" name="service">
+            <label for="servico">Serviço oferecido:</label>
+            <input type="text" id="servico" name="servico">
         </div>
 
         <div class="form-content">
@@ -52,23 +50,13 @@ if($resultado){
         </div>
 
         <div class="form-content">
-            <label for="desc">Descrição:</label>
-            <input type="text" id="desc" name="desc">
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao">
         </div>
 
         <div class="form-content">
-            <label for="time">Tempo de Serviço:</label>
-            <input type="time" id="time" name="time">
-        </div>
-
-        <div class="form-content">
-            <label for="pic">Fotos:</label>
-            <input type="file" id="pic" name="pic">
-        </div>
-
-        <div class="form-content">
-            <label for="prod">Produto utilizado:</label>
-            <input type="text" id="prod" name="prod">
+            <label for="tempo">Tempo de Serviço:</label>
+            <input type="time" id="tempo" name="tempo">
         </div>
 
         <input type="submit" value="Adicionar Produto" id="add_prod"><a href="cad_prod.html">Adicionar Produto</a>
