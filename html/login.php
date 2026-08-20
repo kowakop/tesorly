@@ -1,3 +1,15 @@
+<!-- 
+ ⊹
+⢠⡏⠉⠑⢄⠀ ⠀  ⡠⠋⠉⢱⡀
+⡇⠙⠒⠒⠬⡗⢒⢮⠄⠒⠒⠁⢣
+⠇⠀⠈⠁⢁⡷⠤⢮⠈⠁⠀⠀⡌
+⠘⢄⣀⡰⢻⠁⠀⠘⡕⢄⣀⡰⠁⠀⊹   LOGIN PRONTO - SÓ FALTA O CSS
+⠀⡎⠘⢀⠇⠀⠀⠀⢱⠈⠂⠡⠀
+⠀⠑⢄⡜⠢⡀⠀⢀⠔⠇⡴⠃⠀
+⠀⠀⠀⠑⠠⠚⠀⠓⠔⠋⠀⠀
+⊹
+-->
+
 <?php
     //session_start();
     require_once "funcoes.php";
@@ -34,6 +46,8 @@
 </style>
 </head>
 <body>
+
+    
 
     <!-- html de login pronto -->
 

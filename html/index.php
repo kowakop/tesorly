@@ -17,15 +17,13 @@
         <nav>
             <ul>
                 <li><a href="#home">Sobre o Site</a></li>
-                <li><a href="../login.html">Sobre Sarolau</a></li>
-                <li><a href="../cadastros/cadastrouser.html">Suporte</a></li>
+                <li><a href="#sarolau">Sobre Sarolau</a></li>
+                <li><a href="#suporte">Suporte</a></li>
             </ul>
 
             <div id="socials">
                 <a href="https://www.instagram.com/tesorly/"><img src="./imagens/instagram.png" alt="Instagram"></a>
                 <a href="https://www.github.com/tesorly"><img src="./imagens/github.png" alt="Github"></a>
-                <a href="https://www.twitter.com/tesorly"><img src="./imagens/twitter.png" alt="Twitter"></a>
-                <a href="agendamento/agendaprincipal.php"><img src="./imagens/twitter.png" alt="Twitter"></a>
             </div>
         </nav>
 
@@ -35,8 +33,6 @@
 
     <button id="btn_entrar"> <a href="login.php">Entrar</a></button>
     <button id="btn_cad"><a href="./cadastros/cadastrosuser.php">Cadastrar</a></button>
-
-    <a href="../login.php">teste</a>
 
     <img src="./imagens/banner.png" alt="Banner">
 
@@ -121,26 +117,25 @@
         <div>
             <img src="./imagens/sarah.png" alt="sarah">
             <h2>Sarah Gabriela</h2>
-            <img src="./imagens/instagram.png" alt="Instagram">
-            <img src="./imagens/linkedin.png" alt="LinkedIn">
-            <img src="./imagens/github.png" alt="GitHub">
+            <a href="https://www.instagram.com/gabrielaa.sarah" target="_blank"><img src="./imagens/instagram.png" alt="Instagram"></a>
+            <a href="https://www.linkedin.com/in/sarah-gabriela" target="_blank"><img src="./imagens/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://github.com/kowakop" target="_blank"><img src="./imagens/github.png" alt="GitHub"></a>
         </div>
 
         <div>
-            <img src="./imagens/roger.png" alt="rogerio">
+            <img src="./imagens/rogerio.png" alt="rogerio">
             <h2>Rogério Gonçalves</h2>
-            <img src="./imagens/instagram.png" alt="Instagram">
-            <img src="./imagens/linkedin.png" alt="LinkedIn">
-            <img src="./imagens/github.png" alt="GitHub">
+            <a href="https://www.instagram.com/rogerio.goncalves" target="_blank"><img src="./imagens/instagram.png" alt="Instagram"></a>
+            <a href="https://www.linkedin.com/in/rogerio-goncalves" target="_blank"><img src="./imagens/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://github.com/rogeriogoncalves" target="_blank"><img src="./imagens/github.png" alt="GitHub"></a>
         </div>
 
         <div>
             <img src="./imagens/laura.png" alt="laura">
             <h2>Laura Gabriela</h2>
-            
-            <a href=""><img src="./imagens/instagram.png" alt="Instagram"></a>
-            <a href=""><img src="./imagens/linkedin.png" alt="LinkedIn"></a>
-            <a href=""><img src="./imagens/github.png" alt="GitHub"></a>
+            <a href="https://www.instagram.com/laura.gabriela" target="_blank"><img src="./imagens/instagram.png" alt="Instagram"></a>
+            <a href="https://www.linkedin.com/in/laura-gabriela" target="_blank"><img src="./imagens/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://github.com/lauragabriela" target="_blank"><img src="./imagens/github.png" alt="GitHub"></a>
         </div>
     </div>
 
