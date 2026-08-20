@@ -2,7 +2,7 @@
     $host = "mysql_lab";
     $user = "root";
     $password = "123";
-    $bd = "banco";
+    $bd = "mydb";
     
     $conexao = new mysqli($host, $user, $password, $bd);
 
@@ -10,6 +10,6 @@
         die("Erro na conexão" . $conexao->connect_error);
     }
 
-    echo "Conectado com sucesso";
+    //echo "Conectado com sucesso";
     
 ?>

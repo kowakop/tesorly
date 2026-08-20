@@ -666,7 +666,7 @@ body > p         { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
     <img src="./imagens/tesorly.png" alt="logo tesorly" id="logo">
     <p>Pare de perder tempo! Faça parte do Tesorly e torne-se mais produtivo.</p>
 
-    <button id="btn_entrar"> <a href="php/login.php">Entrar</a></button>
+    <button id="btn_entrar"> <a href="login.php">Entrar</a></button>
     <button id="btn_cad"><a href="./cadastros/cadastros.php">Cadastrar</a></button>
 
     <a href="../login.php">teste</a>

@@ -1,6 +1,6 @@
 <?php
 
-    require_once("../conexao.php");
+    require_once("conexao.php");
 //--------------------USERS-----------------------//
 // ⡤⠒⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⢤
 //⢣⡀⠀⠉⠲⢤⣀⡀⠀⠀⠀⠀⠀⠀⢀⣀⡤⠖⠉⠀⢀⡜
@@ -348,18 +348,17 @@ function logout(){
     session_destroy();
 }
 
-    function login($conexao, $email, $senha) {
-        $sql = "SELECT * FROM usuarios WHERE user_email = ? AND user_senha = ?";
+    function login($conexao, $email, $senha, $telefone, $nome) {
+        $sql = "SELECT * FROM mydb.usuarios WHERE user_email = ? AND user_senha = ? AND user_telefone = ? AND user_nome = ?";
         $stmt = $conexao ->prepare($sql);
-        $stmt->bind_param("ss", $email, $senha);
+        $stmt->bind_param("ssss", $email, $senha, $telefone, $nome);
         $stmt->execute();
 
         $resultado = $stmt->get_result();
         if ($resultado->num_rows > 0) {
             $usuario = $resultado->fetch_assoc();
-            $_SESSION['usuario'] = $usuario['nome'];
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['tipo'] = $usuario['tipo'];
+            $_SESSION['usuarios'] = $usuario['user_nome'];
+            $_SESSION['id'] = $usuario['idusuarios'];
             return true;
         } 
             return false;

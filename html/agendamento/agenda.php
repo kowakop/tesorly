@@ -1,6 +1,6 @@
 
 <?php
-require_once __DIR__ . "./conexao.php";
+require_once __DIR__ . ("/../conexao.php");
 
 
 /**
@@ -223,6 +223,7 @@ class Agenda
         return $h * 3600 + $m * 60 + $s;
     }
 }
+?>
 
 
 
@@ -250,5 +251,3 @@ class Agenda
     <!-- estou pesquisando como fazer um nav bar mais eficiente e preferencialmente, sem precisar de iframe -->
 </body>
 </html>
-
-?>

@@ -1,6 +1,26 @@
 <?php
-    //require_once "funcoes.php";
-    //require_once "conexao.php";
+    //session_start();
+    require_once "funcoes.php";
+
+    if (isset($_POST['enviar'])){
+
+    $email = $_POST['email']??'';
+    $senha = $_POST['senha']??'';
+    $telefone = $_POST['telefone']??'';
+    $nome = $_POST['nome']??'';
+
+    $sucesso = login($conexao, $email, $senha, $telefone, $nome);
+
+    if ($sucesso === true){
+        header("Location: agendamento/agendaprincipal.php");
+        exit;
+    } elseif($sucesso === false){
+        echo "Email ou senha incorretos.";
+    } elseif($sucesso === "erro"){
+        echo "Ocorreu um erro ao realizar o login.";
+    }
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -262,36 +282,22 @@ body > h1 {
 
     <!-- html de login pronto -->
 
-    <?php
-session_start();
-require_once "funcoes.php";
-
-if (isset($_POST['enviar'])){
-
-    $cpf = $_POST['email']??'';
-    $senha = $_POST['senha']??'';
-
-    $sucesso = login($conexao, $email, $senha);
-
-    if ($sucesso === true){
-        header("Location: index.php");
-        exit;
-    } elseif($sucesso === false){
-        echo "Email ou senha incorretos.";
-    } elseif($sucesso === "erro"){
-        echo "Ocorreu um erro ao realizar o login.";
-    }
-
-}
-?>
-
 <body>
     <form method="POST">
         <h3>Login</h3>
-        <label>CPF:</label>
-        <input type="text" name="cpf" required><br><br>
+
+        <label>Nome:</label>
+        <input type="text" name="nome" required><br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" required><br><br>
+
+        <label>Telefone:</label>
+        <input type="text" name="telefone" required><br><br>
+
         <label>Senha:</label>
         <input type="password" name="senha" required><br><br>
+
         <button type="submit" name="enviar">Login</button>
     </form>
     
