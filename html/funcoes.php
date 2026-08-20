@@ -152,7 +152,7 @@ function pesquisarprodutosId($conexao,$idprodutos) {
 //--------------------SERVIÇOS-----------------------//
 
 
-function salvarservico( $conexao,$servico,$valor,$descricao,$tempo,$foto,$agenda_idagenda, ){
+function salvarservico( $conexao,$servico,$valor,$descricao,$tempo,$foto ){
     $sql = "INSERT INTO servicos
     (servico, valor, descricao, tempo_servico, foto, produto_utilizado)
     VALUES (?, ?, ?, ?, ?, ?)";
@@ -207,7 +207,7 @@ function editarservicos($conexao, $nome, $valor, $descricao, $tempo, $fotos, $ag
 function deletarempresario($conexao, $idempresario) {
     $sql = "DELETE FROM empresario WHERE idempresario = ?";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando, 'i', $idservicos);
+    mysqli_stmt_bind_param($comando, 'i', $idempresario);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou; //true ou false
@@ -238,10 +238,10 @@ function editarempresario($conexao, $tipo, $diastrabalho, $cidade, $idempresario
 
 function salvarempresario( $conexao, $tipo, $diastrabalho, $cidade ){
     $sql = "INSERT INTO empresario
-    (tipo, diastrabalho,cidade)
+    (tipo, diastrabalho, cidade)
     VALUES (?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param( $comando,'sis', $tipo, $diastrabalho,$cidade
+    mysqli_stmt_bind_param( $comando,'sss', $tipo, $diastrabalho,$cidade
     );
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
