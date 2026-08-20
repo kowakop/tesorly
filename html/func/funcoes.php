@@ -236,12 +236,12 @@ function editarempresario($conexao, $tipo, $diastrabalho, $cidade, $idempresario
 };
 
 
-function salvarempresario( $conexao, $servico, $valor, $descricao, $tempo, $foto, $agenda_idagenda, ){
-    $sql = "INSERT INTO servicos
-    (servico, valor, descricao, tempo_servico, foto, produto_utilizado)
-    VALUES (?, ?, ?, ?, ?, ?)";
+function salvarempresario( $conexao, $tipo, $diastrabalho, $cidade ){
+    $sql = "INSERT INTO empresario
+    (tipo, diastrabalho,cidade)
+    VALUES (?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param( $comando,'sdssss', $servico, $valor, $descricao, $tempo, $foto, $produto
+    mysqli_stmt_bind_param( $comando,'sis', $tipo, $diastrabalho,$cidade
     );
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
