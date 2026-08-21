@@ -1,7 +1,7 @@
 <?php
 
 include("../conexao.php");
-include("../funcoes/funcoes.php");
+include("../funcoes.php");
 
 $tipo = $_POST['tipo'];
 $dias_trab = $_POST['dias_trab'];

@@ -32,7 +32,7 @@
     <p>Pare de perder tempo! Faça parte do Tesorly e torne-se mais produtivo.</p>
 
     <button id="btn_entrar"> <a href="login.php">Entrar</a></button>
-    <button id="btn_cad"><a href="cadastros/cadastrosuser.php">Cadastrar</a></button>
+    <button id="btn_cad"><a href="usuarios/cadastrosuser.php">Cadastrar</a></button>
 
     <img src="./imagens/banner.png" alt="Banner">
 
