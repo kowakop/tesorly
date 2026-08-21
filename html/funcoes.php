@@ -226,12 +226,12 @@ function editarempresario($conexao, $tipo, $diastrabalho, $cidade, $idempresario
 };
 
 
-function salvarempresario( $conexao, $tipo, $diastrabalho, $cidade ){
+function salvarempresario( $conexao, $tipo, $dias_trab, $cidade ){
     $sql = "INSERT INTO empresario
-    (tipo, diastrabalho, cidade)
+    (empre_tipo, empre_dias_trab, empre_cidade)
     VALUES (?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param( $comando,'sss', $tipo, $diastrabalho,$cidade
+    mysqli_stmt_bind_param( $comando,'sss', $tipo, $dias_trab,$cidade
     );
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
@@ -364,7 +364,7 @@ function logout(){
 //--------------------IMAGEM-----------------------//
 
         function uploadImg ($arquivo){
-        $diretorio = 'imagens';
+        $diretorio = '../imagens/';
         $extensao = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
         $permitidas = ['jpg', 'jpeg', 'png'];
 

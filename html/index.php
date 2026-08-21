@@ -18,7 +18,7 @@
             <ul>
                 <li><a href="#home">Sobre o Site</a></li>
                 <li><a href="#sarolau">Sobre Sarolau</a></li>
-                <li><a href="#suporte">Suporte</a></li>
+                <li><a href="empresarios/cad_emp.php">Suporte</a></li>
             </ul>
 
             <div id="socials">
