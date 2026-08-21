@@ -28,10 +28,22 @@ CREATE TABLE IF NOT EXISTS `mydb`.`usuarios` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`empresario` (
   `idempresario` INT NOT NULL AUTO_INCREMENT,
+  `usuarios_idusuarios` INT NOT NULL,
   `empre_tipo` VARCHAR(255) NOT NULL,
   `empre_dias_trab` VARCHAR(255) NOT NULL,
   `empre_cidade` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`idempresario`)
+  PRIMARY KEY (`idempresario`),
+
+  UNIQUE INDEX `usuarios_idusuarios_UNIQUE` (`usuarios_idusuarios` ASC) VISIBLE,
+
+  INDEX `fk_empresario_usuarios_idx` (`usuarios_idusuarios` ASC) VISIBLE,
+
+  CONSTRAINT `fk_empresario_usuarios`
+    FOREIGN KEY (`usuarios_idusuarios`)
+    REFERENCES `mydb`.`usuarios` (`idusuarios`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+
 ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -60,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`servicos` (
   `serv_nome` VARCHAR(255) NOT NULL,
   `serv_valor` DECIMAL(10,2) NOT NULL,
   `serv_descricao` VARCHAR(255) NOT NULL,
-  `serv_tempo` TIME NOT NULL,           -- duração do serviço (ex: 00:45:00)
+  `serv_tempo` TIME NOT NULL,
   `serv_fotos` VARCHAR(45) NULL,
   `empresario_idempresario` INT NOT NULL,
   PRIMARY KEY (`idservicos`),
@@ -77,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`servicos` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`horarios` (
   `idhorarios` INT NOT NULL AUTO_INCREMENT,
-  `horarios_dia_semana` VARCHAR(45) NOT NULL,  -- ex: 'segunda', 'terca'...
+  `horarios_dia_semana` VARCHAR(45) NOT NULL,
   `horarios_hora_inicio` TIME NOT NULL,
   `horarios_hora_fim` TIME NOT NULL,
   `empresario_idempresario` INT NOT NULL,

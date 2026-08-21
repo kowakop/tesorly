@@ -15,9 +15,9 @@ if (isset($_POST['enviar'])) {
 if ($nomeArquivo === false) {
     echo "Erro no upload da imagem. Verifique o formato (jpg, png, webp) e o tamanho (até 5MB).";
 } else {
-    $resultado = salvarprodutos($conexao, $nome, $marca, $nomeArquivo, $empresarioid);
+    $sucesso = salvarprodutos($conexao, $nome, $marca, $nomeArquivo, $empresarioid);
 }
-    if ($resultado) {
+    if ($sucesso) {
         echo "Produto cadastrado com sucesso!";
     } else {
         echo "Erro no cadastro do produto. Verifique a imagem ou a conexão.";
