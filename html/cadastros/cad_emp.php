@@ -1,11 +1,11 @@
 <?php
 
 include("../conexao.php");
-include("../funcoes/funcoes.php");
+include("../funcoes.php");
 
-$tipo = $_POST['tipo'];
-$dias_trab = $_POST['dias_trab'];
-$cidade = $_POST['cidade'];
+$tipo = $_POST['empre_tipo'];
+$dias_trab = $_POST['empre_dias_trab'];
+$cidade = $_POST['empre_cidade'];
 
 $resultado = salvarempresario($conexao, $tipo, $dias_trab, $cidade);
 

@@ -45,7 +45,7 @@ function listaruser($conexao) {
 function salvaruser($conexao, $nome, $email, $senha, $telefone, $fotos) {
     $sql = "INSERT INTO usuarios (nome, email, senha, telefone, fotos) VALUES (?, ?, ?, ?,?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando, 'ssii',$nome, $email, $senha, $telefone, $fotos);
+    mysqli_stmt_bind_param($comando, 'sssi',$nome, $email, $senha, $telefone, $fotos);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;
@@ -54,7 +54,7 @@ function salvaruser($conexao, $nome, $email, $senha, $telefone, $fotos) {
 function editaruser($conexao, $nome, $email, $senha, $telefone, $fotos, $idusuarios){
     $sql = "UPDATE usuarios SET nome=?, email=?, senha=?, telefone=?, fotos=? WHERE idusuarios=?";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando, 'sssss', $nome, $email, $senha, $telefone, $fotos, $idusuarios);
+    mysqli_stmt_bind_param($comando, 'sssi', $nome, $email, $senha, $telefone, $fotos, $idusuarios);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;
@@ -147,7 +147,7 @@ function salvarservico( $conexao,$servico,$valor,$descricao,$tempo){
     (serv_nome, serv_valor, serv_descricao, serv_tempo)
     VALUES (?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param( $comando,'ssss',$servico,$valor,$descricao,$tempo);
+    mysqli_stmt_bind_param( $comando,'siss',$servico, $valor, $descricao, $tempo);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;
@@ -178,7 +178,7 @@ function listarservico($conexao) {
 function editarservicos($conexao, $nome, $valor, $descricao, $tempo, $fotos, $agenda_idagenda, $idservicos) {
     $sql = "UPDATE servicos SET nome=?, valor=?, descricao=?, tempo=?, fotos=?, agenda_idagenda=? WHERE idservicos=?";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando,'sssi', $nome, $valor, $descricao, $tempo, $fotos, $agenda_idagenda, $idservicos);
+    mysqli_stmt_bind_param($comando,'sdsss', $nome, $valor, $descricao, $tempo, $fotos, $agenda_idagenda, $idservicos);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;
@@ -226,12 +226,12 @@ function editarempresario($conexao, $tipo, $diastrabalho, $cidade, $idempresario
 };
 
 
-function salvarempresario( $conexao, $tipo, $diastrabalho, $cidade ){
+function salvarempresario( $conexao, $tipo, $dias_trab, $cidade ){
     $sql = "INSERT INTO empresario
-    (tipo, diastrabalho, cidade)
+    (empre_tipo, empre_dias_trab, empre_cidade)
     VALUES (?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param( $comando,'sss', $tipo, $diastrabalho,$cidade
+    mysqli_stmt_bind_param( $comando,'sss', $tipo, $dias_trab,$cidade
     );
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
@@ -274,7 +274,7 @@ function listaragenda($conexao) {
 function editaragenda($conexao, $horario, $dia, $agenda_idusuario, $idagenda) {
     $sql = "UPDATE agenda SET horario=?, dia=?, agenda_idusuario=? WHERE idempresario=?";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando,'sss', $tipo, $diastrabalho, $cidade, $idempresario);
+    mysqli_stmt_bind_param($comando,'isii', $horario, $dia, $agenda_idusuario, $idagenda);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;
@@ -364,7 +364,7 @@ function logout(){
 //--------------------IMAGEM-----------------------//
 
         function uploadImg ($arquivo){
-        $diretorio = 'imagens';
+        $diretorio = '../imagens/';
         $extensao = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
         $permitidas = ['jpg', 'jpeg', 'png'];
 

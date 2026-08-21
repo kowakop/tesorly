@@ -41,7 +41,7 @@
             <ul class="nav_list_index">
                 <li><a href="#home">Sobre o site</a></li>
                 <li><a href="#sarolau">Sobre Sarolau</a></li>
-                <li><a href="#suporte">Suporte</a></li>
+                <li><a href="empresarios/cad_emp.php">Suporte</a></li>
             </ul>
         </nav>
 

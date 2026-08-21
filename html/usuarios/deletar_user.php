@@ -1,7 +1,7 @@
 <?php
 
 include("../conexao.php");
-include("../funcoes/funcoes.php");
+include("../funcoes.php");
 
 echo "<h3>Deletar Usuário</h3>";
 $deletado = deletaruser($conexao, 1);
