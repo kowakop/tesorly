@@ -28,7 +28,7 @@
 </head>
 <body class="body_index">
 
-    <a href="pags_emp/pag_prod.php" class="dev_link_index">TESTEEEE</a>
+    <a href="pags_emp/pag_prod.php" class="dev_link_index"></a>
 
     <!-- ◢◤◢◤◢◤ CABEÇALHO ◢◤◢◤◢◤ -->
     <header class="header_index">
@@ -59,7 +59,7 @@
 
             <div class="hero_buttons_index">
                 <button id="btn_entrar" class="btn_primary_index"><a href="login.php">Entrar</a></button>
-                <button id="btn_cad" class="btn_outline_index"><a href="cadastros/cadastrosuser.php">Cadastrar</a></button>
+                <button id="btn_cad" class="btn_outline_index"><a href="usuarios/cadastrosuser.php">Cadastrar</a></button>
             </div>
         </div>
 

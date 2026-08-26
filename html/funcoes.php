@@ -43,9 +43,9 @@ function listaruser($conexao) {
 
 //string s numero i
 function salvaruser($conexao, $nome, $email, $senha, $telefone, $fotos) {
-    $sql = "INSERT INTO usuarios (nome, email, senha, telefone, fotos) VALUES (?, ?, ?, ?,?)";
+    $sql = "INSERT INTO usuarios (user_nome, user_email, user_senha, user_telefone, user_fotos) VALUES (?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando, 'sssi',$nome, $email, $senha, $telefone, $fotos);
+    mysqli_stmt_bind_param($comando, 'sssss', $nome, $email, $senha, $telefone, $fotos);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;
@@ -226,13 +226,10 @@ function editarempresario($conexao, $tipo, $diastrabalho, $cidade, $idempresario
 };
 
 
-function salvarempresario( $conexao, $tipo, $dias_trab, $cidade ){
-    $sql = "INSERT INTO empresario
-    (empre_tipo, empre_dias_trab, empre_cidade)
-    VALUES (?, ?, ?)";
+function salvarempresario($conexao, $usuarios_idusuarios, $tipo, $dias_trab, $cidade) {
+    $sql = "INSERT INTO empresario (usuarios_idusuarios, empre_tipo, empre_dias_trab, empre_cidade) VALUES (?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param( $comando,'sss', $tipo, $dias_trab,$cidade
-    );
+    mysqli_stmt_bind_param($comando, 'isss', $usuarios_idusuarios, $tipo, $dias_trab, $cidade);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;

@@ -76,23 +76,11 @@
     <!-- Script para redirecionar ao clicar no checkbox (TEM QUE TROCAR ISSO DAQUI)-->
     <script>
         document.getElementById('sou_emp').onclick = function() {
-        if (this.checked) {
-        window.location.href = 'cad_emp.html';
-        }
-    };
-
-    // NÃO ESTÁ FUNCIONANDO (TENHO QUE VER O QUE É)
-    const senha = document.getElementById('senha');
+        iconst senha = document.getElementById('senha');
     const mostrarSenha = document.getElementById('mostrar-senha');
 
     mostrarSenha.addEventListener('click', function() {
-        if (mostrarSenha.checked) {
-            senha.type = 'text';
-        } 
-        
-        else {
-            senha.type = 'password';
-        }
+        senha.type = mostrarSenha.checked ? 'text' : 'password';
     });
     </script>
 

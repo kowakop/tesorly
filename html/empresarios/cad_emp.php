@@ -1,19 +1,27 @@
 <?php
+session_start();
 
 require_once("../conexao.php");
 require_once("../funcoes.php");
 
 $mensagem = "";
 
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: ../usuarios/cadastrosuser.php");
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $usuarios_idusuario = $_SESSION['id_usuario'];
     $tipo = $_POST['empre_tipo'] ?? '';
     $dias_trab = $_POST['empre_dias_trab'] ?? '';
     $cidade = $_POST['empre_cidade'] ?? '';
 
-    $resultado = salvarempresario($conexao, $tipo, $dias_trab, $cidade);
+    $resultado = salvarempresario($conexao, $usuarios_idusuario, $tipo, $dias_trab, $cidade);
 
     if ($resultado) {
+        unset($_SESSION['id_usuario']);
         $mensagem = "Empresário cadastrado com sucesso!";
     } else {
         $mensagem = "Erro ao cadastrar.";

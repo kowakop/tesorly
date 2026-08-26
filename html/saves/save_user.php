@@ -1,17 +1,18 @@
 <?php
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    include '../conexao.php'; 
+    include '../conexao.php';
+    include '../funcoes.php';
 
     $nome = $_POST['nome'] ?? '';
     $email = $_POST['email'] ?? '';
     $telefone = $_POST['telefone'] ?? '';
     $senha_pura = $_POST['senha'] ?? '';
-    $confirmar_senha = $_POST['confirmar-senha'] ?? '';
-    
-    $fotos = ""; 
+    $sou_emp = isset($_POST['sou_emp']);
 
-    // isso daqui vê se está vazio
+    $fotos = "";
+
     if (empty($nome) || empty($email) || empty($telefone) || empty($senha_pura)) {
         echo "<script>alert('Por favor, preencha todos os campos obrigatórios!'); window.history.back();</script>";
         exit;
@@ -19,51 +20,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $senha_criptografada = password_hash($senha_pura, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO usuarios (user_nome, user_email, user_senha, user_telefone, user_fotos) VALUES (?, ?, ?, ?, ?)";
+    $funcionou = salvaruser($conexao, $nome, $email, $senha_criptografada, $telefone, $fotos);
 
-    $comando = mysqli_prepare($conexao, $sql);
+    if ($funcionou) {
+        $id_usuario = mysqli_insert_id($conexao);
+        $_SESSION['id_usuario'] = $id_usuario;
 
-    if ($comando) {
-        mysqli_stmt_bind_param(
-            $comando,
-            "sssss",
-            $nome,
-            $email,
-            $senha_criptografada,
-            $telefone,
-            $fotos
-        );
-
-        if (mysqli_stmt_execute($comando)) {
-            echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href='../agendamento/agendaprincipal.php';</script>";
+        if ($sou_emp) {
+            echo "<script>window.location.href='../empresarios/cad_emp.php';</script>";
         } else {
-            echo "Erro ao salvar no banco: " . mysqli_stmt_error($comando);
+            echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href='../agendamento/agendaprincipal.php';</script>";
         }
-
-        mysqli_stmt_close($comando);
+    } else if (mysqli_errno($conexao) == 1062) {
+        echo "<script>alert('Este email já está cadastrado.'); window.history.back();</script>";
     } else {
-        echo "Erro ao preparar o banco: " . mysqli_error($conexao);
+        echo "Erro ao salvar no banco: " . mysqli_error($conexao);
     }
 
     mysqli_close($conexao);
 }
 ?>
-
-<!-- VOU VER SE CONSIGO ESTILIZAR ESSES ALERTAS RIDICULOS -->
-
-<!-- 
-⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⡋⠉⠙⠒⢤⡀⠀⠀⠀⠀⠀⢠⠖⠉⠉⠙⠢⡄⠀
-⠀⠀⠀⠀⠀⠀⢀⣼⣟⡒⠒⠀⠀⠀⠀⠀⠙⣆⠀⠀⠀⢠⠃⠀⠀  ⠀⠀⠹⡄
-⠀⠀⠀⠀⠀⠀⣼⠷⠖⠀⠀⠀⠀⠀⠀⠀⠀⠘⡆⠀⠀⡇⠀⠀⠀⠀  ⠀⠀⢷
-⠀⠀⠀⠀⠀⠀⣷⡒⠀⠀⢐⣒⣒⡒⠀⣐⣒⣒⣧⠀⠀⡇         ⢸
-⠀⠀⠀⠀⠀⢰⣛⣟⣂⠀⠘⠤⠬⠃⠰⠑⠥⠊⣿⠀⢴⠃⠀Ok..⠀  ⢸
-⠀⠀⠀⠀⠀⢸⣿⡿⠤⠀⠀⠀⠀⠀⢀⡆⠀⠀⣿⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⣸
-⠀⠀⠀⠀⠀⠈⠿⣯⡭⠀⠀⠀⠀⢀⣀⠀⠀⠀⡟⠀⠀⢸⠀⠀⠀⠀⠀⠀⢠⠏
-⠀⠀⠀⠀⠀⠀⠀⠈⢯⡥⠄⠀⠀⠀⠀⠀⠀⡼⠁⠀⠀⠀⠳⢄⣀⣀⣀⡴⠃⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⡦⣄⣀⣀⣀⣠⠞⠁⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⠛⠃⠀⠀⠀⢹⠳⡶⣤⡤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⣠⢴⣿⣿⣿⡟⡷⢄⣀⣀⣀⡼⠳⡹⣿⣷⠞⣳⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⢰⡯⠭⠹⡟⠿⠧⠷⣄⣀⣟⠛⣦⠔⠋⠛⠛⠋⠙⡆⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⢸⣿⠭⠉⠀⢠⣤⠀⠀⠀⠘⡷⣵⢻⠀⠀⠀⠀⣼⠀⣇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⡇⣿⠍⠁⠀⢸⣗⠂⠀⠀⠀⣧⣿⣼⠀⠀⠀⠀⣯⠀⢸⠀⠀⠀⠀⠀⠀⠀
--->
