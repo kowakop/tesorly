@@ -7,20 +7,13 @@
 
     $email = $_POST['email']??'';
     $senha = $_POST['senha']??'';
-    $telefone = $_POST['telefone']??'';
-    $nome = $_POST['nome']??'';
 
-    $sucesso = login($conexao, $email, $senha, $telefone, $nome);
+    $sucesso = login($conexao, $email, $senha);
 
-    if ($sucesso === true){
+    if ($sucesso == true){
         header("Location: agendamento/agendaprincipal.php");
         exit;
-    } elseif($sucesso === false){
-        echo "Email ou senha incorretos.";
-    } elseif($sucesso === "erro"){
-        echo "Ocorreu um erro ao realizar o login.";
     }
-
 }
 ?>
 <!DOCTYPE html>
@@ -37,14 +30,8 @@
     <form method="POST" action="login.php" class="login_form">
         <h3 class="login_title">Login</h3>
 
-        <label class="login_label">Nome:</label>
-        <input type="text" name="nome" required class="login_input">
-
         <label class="login_label">Email:</label>
         <input type="email" name="email" required class="login_input">
-
-        <label class="login_label">Telefone:</label>
-        <input type="text" name="telefone" required class="login_input">
 
         <label class="login_label">Senha:</label>
         <input type="password" name="senha" required id="senha" class="login_input">

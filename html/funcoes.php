@@ -16,7 +16,7 @@ function verificarLogin(){
     exit;
     }
 }
-   
+
 function deletaruser($conexao, $idusuarios) {
         $sql = "DELETE FROM usuarios WHERE idusuarios = ?";
         $comando = mysqli_prepare($conexao, $sql);
@@ -335,21 +335,42 @@ function logout(){
     session_destroy();
 }
 
-    function login($conexao, $email, $senha, $telefone, $nome) {
-        $sql = "SELECT * FROM mydb.usuarios WHERE user_email = ? AND user_senha = ? AND user_telefone = ? AND user_nome = ?";
-        $stmt = $conexao ->prepare($sql);
-        $stmt->bind_param("ssss", $email, $senha, $telefone, $nome);
-        $stmt->execute();
+    //function login($conexao, $email, $senha) {
+    //    $sql = "SELECT * FROM mydb.usuarios WHERE user_email = ? AND user_senha = ?";
+    //    $stmt = $conexao ->prepare($sql);
+    //    $stmt->bind_param("ss", $email, $senha);
+    //    $stmt->execute();
+//
+    //    $resultado = $stmt->get_result();
+    //    if ($resultado->num_rows > 0) {
+    //        $usuario = $resultado->fetch_assoc();
+    //        $_SESSION['usuario'] = $usuario['user_nome'];
+    //        $_SESSION['id'] = $usuario['idusuarios'];
+    //        return true;
+    //    } 
+    //        return false;
+    //    }
 
-        $resultado = $stmt->get_result();
-        if ($resultado->num_rows > 0) {
-            $usuario = $resultado->fetch_assoc();
-            $_SESSION['usuarios'] = $usuario['user_nome'];
+    function login($conexao, $email, $senha) {
+    $sql = "SELECT * FROM mydb.usuarios WHERE user_email = ?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+
+    $resultado = $stmt->get_result();
+
+    if ($resultado->num_rows > 0) {
+        $usuario = $resultado->fetch_assoc();                 //encontrar algum user com o email colocado
+
+        if (password_verify($senha, $usuario['user_senha'])) {            //comparar a senha com o hash para permitir o login com a senha
+            $_SESSION['usuario'] = $usuario['user_nome'];
             $_SESSION['id'] = $usuario['idusuarios'];
             return true;
-        } 
-            return false;
         }
+    }
+
+    return false;
+}
 
 //--------------------IMAGEM-----------------------//
 // ⡤⠒⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⢤
