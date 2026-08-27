@@ -16,7 +16,7 @@ $comando = mysqli_prepare($conexao, $sql);
 
 mysqli_stmt_bind_param(
     $comando,
-    "sss",
+    "sdsss",
     $servico,
     $valor,
     $descricao,
