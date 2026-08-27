@@ -887,74 +887,61 @@ body {
 */
 
 /* ===== Reset básico ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
-}
 
-html, body {
-    height: 100%;
-}
-
-body {
-    display: flex;
+.body-cadastro {
+    position: relative;
     min-height: 100vh;
     background-color: #d9c9f5;
-    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
 }
 
-/* ===== Foto da mulher (ocupa metade esquerda da tela) ===== */
+/* ===== Foto da mulher ===== */
 .foto_cadastro {
     width: 45%;
+    max-width: 550px;
     height: 100vh;
     object-fit: cover;
     border-radius: 0 50% 50% 0 / 0 45% 45% 0;
     flex-shrink: 0;
 }
 
-/* ===== Lado direito (título + card) ===== */
-.lado-direito-cadastro {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    position: relative;
-}
-
-/* ===== Título "Cadastro" ===== */
+/* ===== Título "Tesorly" ===== */
 .h1_cadastro {
     position: absolute;
-    top: 30px;
-    right: 60px;
-    font-family: 'Dancing Script', cursive;
-    font-size: 40px;
+    top: 40px;
+    right: 8%;
+    font-family: 'Dancing Script', 'Brush Script MT', cursive;
+    font-size: 42px;
     font-weight: 700;
     color: #ffffff;
 }
 
-/* ===== Botão de voltar (seta) ===== */
+/* ===== Botão de voltar (dentro do card, seta à direita) ===== */
 .butao_cadastro {
     position: absolute;
-    top: 30px;
-    left: 60px;
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
+    top: 152px;
+    right: calc(8% + 24px);
+    z-index: 5;
 }
 
 .butao_cadastro a {
     text-decoration: none;
-    color: #333;
 }
 
 /* ===== Logo pequena (flor) ===== */
 .logotesorly_cadastro {
-    display: none; /* não usada nesse layout, pode remover do HTML se quiser */
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 148px;
+    right: calc(8% + 300px);
+    z-index: 5;
 }
 
 /* ===== Formulário (card) ===== */
@@ -963,10 +950,13 @@ body {
     border: 1px solid #5c3d75;
     border-radius: 20px;
     width: 100%;
-    max-width: 380px;
+    max-width: 340px;
     padding: 40px 32px 32px;
     display: flex;
     flex-direction: column;
+    position: absolute;
+    top: 125px;
+    right: 8%;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
@@ -974,14 +964,14 @@ body {
 .form-content-cadastro {
     display: flex;
     flex-direction: column;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
 }
 
 .label-cadastro {
-    font-size: 13px;
+    font-size: 12px;
     color: #333;
     margin-bottom: 6px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 /* ===== Inputs de texto ===== */
@@ -989,7 +979,7 @@ body {
     background-color: #eeeeee;
     border: none;
     border-radius: 8px;
-    padding: 12px 14px;
+    padding: 11px 14px;
     font-size: 14px;
     color: #333;
     outline: none;
@@ -1001,10 +991,9 @@ body {
     box-shadow: 0 0 0 2px #5c3d75;
 }
 
-/* ===== Checkboxes (Mostrar senha / Sou empresário) ===== */
+/* ===== Checkboxes ===== */
 input[type="checkbox"].input-cadastro {
     width: auto;
-    height: auto;
     accent-color: #5c1a4a;
     cursor: pointer;
 }
@@ -1012,26 +1001,22 @@ input[type="checkbox"].input-cadastro {
 .mostrarSenha {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: 6px;
 }
 
 .mostrarSenha .label-cadastro {
     margin-bottom: 0;
-    font-weight: 500;
 }
 
-/* Linha "Sou empresário" */
 .form_cadastro > div:not(.form-content-cadastro):not(.registro-cadastro) {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
+    gap: 6px;
+    margin-bottom: 18px;
 }
 
 .form_cadastro > div:not(.form-content-cadastro):not(.registro-cadastro) .label-cadastro {
     margin-bottom: 0;
-    font-weight: 500;
 }
 
 /* ===== Texto "Já tem uma conta?" ===== */
@@ -1062,4 +1047,41 @@ input[type="checkbox"].input-cadastro {
     border: none;
     border-radius: 10px;
     padding: 14px;
-    font-size: 15px; }
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-cadastro:hover {
+    background-color: #74225c;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 900px) {
+    .foto_cadastro {
+        display: none;
+    }
+
+    .body-cadastro {
+        display: block;
+    }
+
+    .form_cadastro {
+        position: static;
+        margin: 100px auto 40px;
+    }
+
+    .h1_cadastro {
+        position: static;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .butao_cadastro,
+    .logotesorly_cadastro {
+        position: static;
+        margin: 10px auto;
+        display: block;
+    }
+}

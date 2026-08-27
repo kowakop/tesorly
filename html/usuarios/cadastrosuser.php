@@ -15,14 +15,14 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="html-cadastro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Cadastro - Tesorly</title>
 </head>
-<body>
+<body class="body-cadastro">
         <h1 class="h1_cadastro">Cadastro</h1>
 
         <button class="butao_cadastro"><a href="../index.php">◀️</a></button>
