@@ -142,12 +142,12 @@ function pesquisarprodutosId($conexao,$idprodutos) {
 //--------------------SERVIÇOS-----------------------//
 
 
-function salvarservico( $conexao,$servico,$valor,$descricao,$tempo){
+function salvarservico( $conexao,$servico,$valor,$descricao,$tempo,$fotos){
     $sql = "INSERT INTO mydb.servicos
-    (serv_nome, serv_valor, serv_descricao, serv_tempo)
-    VALUES (?, ?, ?, ?)";
+    (serv_nome, serv_valor, serv_descricao, serv_tempo, serv_fotos)
+    VALUES (?, ?, ?, ?,?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param( $comando,'siss',$servico, $valor, $descricao, $tempo);
+    mysqli_stmt_bind_param( $comando,'sdsss',$servico, $valor, $descricao, $tempo, $fotos);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;
