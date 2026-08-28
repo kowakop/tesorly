@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($sou_emp) {
             echo "<script>window.location.href='../empresarios/cad_emp.php';</script>";
         } else {
-            echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href='../agendamento/agendaprincipal.php';</script>";
+            echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href='../index.php';</script>";
         }
     } else if (mysqli_errno($conexao) == 1062) {
         echo "<script>alert('Este email já está cadastrado.'); window.history.back();</script>";

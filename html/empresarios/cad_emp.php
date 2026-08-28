@@ -7,7 +7,7 @@ require_once("../funcoes.php");
 $mensagem = "";
 
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ../usuarios/cadastrosuser.php");
+    header("Location: ../index.php");
     exit;
 }
 
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" id="empre_dias_trab" name="empre_dias_trab" required>
         </div>
 
-        <input type="submit" value="Finalizar Cadastro" id="cadastro">
+        <a href="../index.php"><input type="submit" value="Finalizar Cadastro" id="cadastro">
     </form>
 </body>
 </html>

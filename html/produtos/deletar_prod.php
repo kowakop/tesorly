@@ -4,7 +4,7 @@ include("../conexao.php");
 include("../funcoes.php");
 
 echo "<h3>Deletar Produto</h3>";
-$deletado = deletarprodutos($conexao, 1);
+$deletado = deletarprodutos($conexao, 2);
 if($deletado){
     echo "Produto deletado com sucesso.";
 }else{

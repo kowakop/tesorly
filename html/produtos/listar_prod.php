@@ -1,14 +1,16 @@
 <?php
 session_start();
-require_once '../funcoes.php';
-verificarLogin();
+require_once ("../conexao.php");
+require_once ("../funcoes.php");
+
 
 
 
 echo "<h2> Produtos Cadastrados </h2>";
-$produto = listarprodutos($conexao);
-while($produtos = $produtos->fetch_assoc()){
-    print_r($produtos);
+$produtos = listarprodutos($conexao);
+
+foreach ($produtos as $produto) {
+    print_r($produto);
     echo "<br>";
 }
 
