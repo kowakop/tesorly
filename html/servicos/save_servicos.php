@@ -1,37 +1,29 @@
 <?php
+session_start();
 
-include 'conexao.php';
+require("../conexao.php");
+require("../funcoes.php");
 
-$servico = $_POST['servico'];
-$valor = $_POST['valor'];
-$descricao = $_POST['descricao'];
-$tempo = $_POST['tempo'];
-$foto = $_POST['foto'];
+if (isset($_POST['enviar'])) {
 
-$sql = "INSERT INTO servicos
-(servicos, valor, descricao, tempo, foto)
-VALUES (?, ?, ?, ?, ?)";
+    $servico   = $_POST['servico'] ?? '';
+    $valor     = $_POST['valor'] ?? '';
+    $descricao = $_POST['descricao'] ?? '';
+    $tempo     = $_POST['tempo'] ?? '';
 
-$comando = mysqli_prepare($conexao, $sql);
+    $nomeArquivo = uploadImg($_FILES['fotos'] ?? null);
 
-mysqli_stmt_bind_param(
-    $comando,
-    "sdsss",
-    $servico,
-    $valor,
-    $descricao,
-    $tempo,
-    $foto
+    if ($nomeArquivo === false) {
+        echo "Erro no upload da imagem. Verifique o formato (jpg, png, webp) e o tamanho (até 5MB).";
+        exit;
+    }
 
-);
+    $sucesso = salvarservico($conexao, $servico, $valor, $descricao, $tempo, $nomeArquivo);
 
-if (mysqli_stmt_execute($comando)) {
-    echo "Serviços cadastrados com sucesso!";
-} else {
-    echo "Erro: " . mysqli_error($conexao);
+    if ($sucesso) {
+        echo "Serviço cadastrado com sucesso!";
+    } else {
+        echo "Erro no cadastro do serviço.";
+    }
 }
-
-mysqli_stmt_close($comando);
-mysqli_close($conexao);
-
 ?>

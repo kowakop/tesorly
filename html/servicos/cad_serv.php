@@ -1,22 +1,4 @@
-<?php
 
-include("../conexao.php");
-include("../funcoes.php");
-
-$servico = $_POST['servico'];
-$valor = $_POST['valor'];
-$descricao = $_POST['descricao'];
-$tempo = $_POST['tempo'];
-
-$resultado = salvarservico($conexao, $servico, $valor, $descricao, $tempo);
-
-if($resultado){
-    echo "Serviço cadastrado";
-}else{
-    echo "Erro ao cadastrar";
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,8 +41,13 @@ if($resultado){
             <input type="time" id="tempo" name="tempo">
         </div>
 
+         <>
+        <label>Foto do Produto: </label><br>
+        <input type="file" name="fotos" accept="image/*" required>
+         </p>
+
         <input type="submit" value="Adicionar Produto" id="add_prod"><a href="cad_prod.html">Adicionar Produto</a>
-        <input type="submit" value="Finalizar Cadastro" id="cadastro">
+        <input type="submit" name="enviar" value="Finalizar Cadastro" id="cadastro">
     </form>
 </body>
 </html>

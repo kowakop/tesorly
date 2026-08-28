@@ -1,0 +1,5 @@
+echo "<h3>Atualizar Empréstimo</h3>";
+
+atualizarEmprestimo($conexao, 1, 1, 1, "2024-01-02", "2024-01-15");
+
+echo "Empréstimo atualizado<br>";
