@@ -1,63 +1,22 @@
-<!-- 
- ⣤⣾⣿⣷⣦⠀⠀⠀⠀⣴⣿⣿⣷⣄⠀⠀⠀⢠⣶⣿⣿⣶⡄
-⠐⠛⠂⠀⢈⣿⠇⠀⠀⠚⠛⠀⠀⢙⣿⠀⠀⠀⠚⠃⠀⠀⣹⣟
-⠀⠀⢠⣾⡿⠛⠀⠀⠀⠀⠀⢴⣾⠿⠋⠀⠀⠀⠀⠀⣴⣿⠟⠃           QUEM FEZ ESSA PÁGINA ? (tô achando que foi é eu) sim foi eu :p
-⠀⠀⠘⠋⠁⠀⠀⠀⠀⠀⠀⠙⠋⠀⠀⠀⠀⠀⠀⠀⠛⠉⠀⠀
-⠀⠀⢰⣷⠆⠀⠀⠀⠀⠀⠀⣾⣶⠀⠀⠀⠀⠀⠀⢀⣾⡶⠀⠀ 
--->
+<?php
+    require_once ("../conexao.php");
+    require_once ("../funcoes.php");
 
-<!-- 
-⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⡋⠉⠙⠒⢤⡀⠀⠀⠀⠀⠀⢠⠖⠉⠉⠙⠢⡄⠀
-⠀⠀⠀⠀⠀⠀⢀⣼⣟⡒⠒⠀⠀⠀⠀⠀⠙⣆⠀⠀⠀⢠⠃⠀⠀  ⠀⠀⠹⡄
-⠀⠀⠀⠀⠀⠀⣼⠷⠖⠀⠀⠀⠀⠀⠀⠀⠀⠘⡆⠀⠀⡇⠀⠀⠀⠀  ⠀⠀⢷
-⠀⠀⠀⠀⠀⠀⣷⡒⠀⠀⢐⣒⣒⡒⠀⣐⣒⣒⣧⠀⠀⡇         ⢸
-⠀⠀⠀⠀⠀⢰⣛⣟⣂⠀⠘⠤⠬⠃⠰⠑⠥⠊⣿⠀⢴⠃⠀Ok..⠀  ⢸
-⠀⠀⠀⠀⠀⢸⣿⡿⠤⠀⠀⠀⠀⠀⢀⡆⠀⠀⣿⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⣸
-⠀⠀⠀⠀⠀⠈⠿⣯⡭⠀⠀⠀⠀⢀⣀⠀⠀⠀⡟⠀⠀⢸⠀⠀⠀⠀⠀⠀⢠⠏
-⠀⠀⠀⠀⠀⠀⠀⠈⢯⡥⠄⠀⠀⠀⠀⠀⠀⡼⠁⠀⠀⠀⠳⢄⣀⣀⣀⡴⠃⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⡦⣄⣀⣀⣀⣠⠞⠁⠀⠀⠀⠀⠀⠀⠈⠉⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⠛⠃⠀⠀⠀⢹⠳⡶⣤⡤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⣠⢴⣿⣿⣿⡟⡷⢄⣀⣀⣀⡼⠳⡹⣿⣷⠞⣳⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⢰⡯⠭⠹⡟⠿⠧⠷⣄⣀⣟⠛⣦⠔⠋⠛⠛⠋⠙⡆⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⢸⣿⠭⠉⠀⢠⣤⠀⠀⠀⠘⡷⣵⢻⠀⠀⠀⠀⣼⠀⣇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⡇⣿⠍⠁⠀⢸⣗⠂⠀⠀⠀⣧⣿⣼⠀⠀⠀⠀⣯⠀⢸⠀⠀⠀⠀⠀⠀⠀
--->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="script.js" defer></script>
-    <title>Página de Produtos</title>
-</head>
-<body>
-    <body>
 
-    <div class="page_pagprod">
-        <header class="topo_pagprod">
-            <span class="logo_pagprod">Tesorly</span>
-            <button class="chat-btn" aria-label="Chat">💬</button>
-        </header>
 
-        <div class="conteudo_pagprod">
+echo "<h2> Produtos Cadastrados </h2>";
+$produtos = listarprodutos($conexao);
 
-            <nav class="sidebar_pagprod">
-                <ul>
-                    <li><a href="#">Serviços disponíveis</a></li>
-                    <li><a href="#">Agenda</a></li>
-                    <li><a href="#" class="ativo">Produtos</a></li>
-                    <li><a href="#">Avalie</a></li>
-                    <li><a href="#">Meu perfil</a></li>
-                    <li><a href="#">Pagamentos</a></li>
-                    <li><a href="#">Profissionais</a></li>
-                    <li><a href="#">Clientes</a></li>
-                </ul>
-                <a href="#" class="logout_pagprod">Logout</a>
-            </nav>
+foreach ($produtos as $produto) {
+    print_r($produto);
+    echo "<br>";
+}
 
-            <!-- ===== Catálogo de serviços ===== -->
+?>
+
+
+<!-- ===== Catálogo de serviços ===== -->
             <main class="catalogo_pagprod">
 
                 <div class="grid-servicos_pagprod">
@@ -155,9 +114,3 @@
         </div>
 
     </div>
-
-
-
-</body>
-</body>
-</html>

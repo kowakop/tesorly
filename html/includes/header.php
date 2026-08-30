@@ -1,6 +1,5 @@
 <?php
-// Define qual página deve aparecer como "ativa" no menu
-$pagina = $_GET['pagina'] ?? 'produtos'; // página padrão
+$pagina = $pagina ?? ($_GET['pagina'] ?? 'produtos');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -29,7 +28,7 @@ $pagina = $_GET['pagina'] ?? 'produtos'; // página padrão
                     <li><a href="?pagina=profissionais" class="<?= $pagina === 'profissionais' ? 'ativo' : '' ?>">Profissionais</a></li>
                     <li><a href="?pagina=clientes"      class="<?= $pagina === 'clientes'      ? 'ativo' : '' ?>">Clientes</a></li>
                 </ul>
-                <a href="../logout.php" class="logout_pagprod">Logout</a>
+                <a href="../deslogar.php" class="logout_pagprod">Logout</a>
             </nav>
 
             <main class="catalogo_pagprod">
