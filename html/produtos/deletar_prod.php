@@ -1,7 +1,9 @@
 <?php
 
-include("../conexao.php");
-include("../funcoes.php");
+session_start();
+require_once ("../conexao.php");
+require_once ("../funcoes.php");
+
 
 echo "<h3>Deletar Produto</h3>";
 $deletado = deletarprodutos($conexao, 2);

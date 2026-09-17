@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $coment_estrela = $_POST['coment_estrela'] ?? '';
     
 
-    $resultado = salvarcomentarios($conexao, $coment_text, $coment_idusuario, $coment_estrela, $cidade);
+    $resultado = salvarcomentarios($conexao, $coment_text, $coment_idusuario, $coment_estrela);
 
     if ($resultado) {
         unset($_SESSION['id_usuario']);
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Comentarios</title>
 </head>
 <body>
     <form method="POST" enctype="multipart/form-data">

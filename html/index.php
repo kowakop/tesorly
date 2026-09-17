@@ -54,7 +54,16 @@
     <!-- ◢◤◢◤◢◤ BANNERS ◢◤◢◤◢◤ -->
     <section class="hero_index" id="home">
         <div class="hero_text_index">
-            <img src="./imagens/tesorly.png" alt="logo tesorly" id="logo" class="hero_logo_index">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="300" height="340">
+                <defs>
+                    <style>
+                      @import url("https://fonts.googleapis.com/css2?family=Parisienne&amp;display=swap");
+                      .word{ font-family:"Parisienne", cursive; font-size:264px;
+                             letter-spacing:0px; fill:#ffffff; }
+                    </style>
+                  </defs>
+                  <text class="word" x="450" y="215" text-anchor="middle">Tesorly</text>
+            </svg>
             <p class="hero_tagline_index">Pare de perder tempo! Faça parte do Tesorly e torne-se mais produtivo.</p>
 
             <div class="hero_buttons_index">
@@ -157,7 +166,7 @@
         <div class="founders_grid_index">
             <div class="founder_card_index">
                 <div class="founder_photo_wrap_index">
-                    <img src="./imagens/sarah.png" alt="Sarah Gabriela" class="founder_photo_index">
+                    <img src="./imagens/messi.png" alt="Sarah Gabriela" class="founder_photo_index">
                 </div>
                 <h2 class="founder_name_index">Sarah Gabriela</h2>
                 <div class="founder_socials_index">
@@ -169,7 +178,7 @@
 
             <div class="founder_card_index">
                 <div class="founder_photo_wrap_index">
-                    <img src="./imagens/rogerio.png" alt="Rogério Gonçalves" class="founder_photo_index">
+                    <img src="./imagens/messi.png" alt="Rogério Gonçalves" class="founder_photo_index">
                 </div>
                 <h2 class="founder_name_index">Rogério Gonçalves</h2>
                 <div class="founder_socials_index">
@@ -181,7 +190,7 @@
 
             <div class="founder_card_index">
                 <div class="founder_photo_wrap_index">
-                    <img src="./imagens/laura.png" alt="Laura Gabriela" class="founder_photo_index">
+                    <img src="./imagens/messi.png" alt="Laura Gabriela" class="founder_photo_index">
                 </div>
                 <h2 class="founder_name_index">Laura Gabriela</h2>
                 <div class="founder_socials_index">
@@ -192,7 +201,7 @@
             </div>
         </div>
 
-        <p class="founders_description_index">Este projeto foi desenvolvido como trabalho de conclusão do ensino médio técnico em Informática para Internet, com o objetivo de aplicar na prática nossos conhecimentos na criação de uma plataforma de agendamento e catálogo de serviços e produtos.</p>
+        <p class="founders_description_index">Este projeto foi desenvolvido como trabalho de conclusão do Curso Técnico em Informática para Internet Integrado ao Ensino Médio, com o objetivo de aplicar na prática nossos conhecimentos na criação de uma plataforma de agendamento e catálogo de serviços e produtos.</p>
     </section>
 
     <!-- ◢◤◢◤◢◤ RODAPÉ ◢◤◢◤◢◤ -->
