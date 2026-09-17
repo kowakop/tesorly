@@ -216,20 +216,20 @@ function listarempresario($conexao) {
     return $listar_empresario;
 };
 
-function editarempresario($conexao, $tipo, $diastrabalho, $cidade, $idempresario) {
+function editarempresario($conexao, $empre_tipo, $empre_dias_trab, $cidade, $idempresario) {
     $sql = "UPDATE empresario SET tipo=?, diastrabalho=?, cidade=? WHERE idempresario=?";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando,'sss', $tipo, $diastrabalho, $cidade, $idempresario);
+    mysqli_stmt_bind_param($comando,'sss', $empre_tipo, $empre_dias_trab, $cidade, $idempresario);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;
 };
 
 
-function salvarempresario($conexao, $usuarios_idusuarios, $tipo, $dias_trab, $cidade) {
+function salvarempresario($conexao, $usuarios_idusuarios, $empre_tipo, $dias_trab, $cidade) {
     $sql = "INSERT INTO empresario (usuarios_idusuarios, empre_tipo, empre_dias_trab, empre_cidade) VALUES (?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando, 'isss', $usuarios_idusuarios, $tipo, $dias_trab, $cidade);
+    mysqli_stmt_bind_param($comando, 'isss', $usuarios_idusuarios, $empre_tipo, $dias_trab, $cidade);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;
@@ -403,4 +403,61 @@ function logout(){
 
         return false;
     }
+
+
+
+
+
+
+//--------------------comentarios-----------------------//
+// ⡤⠒⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠒⢤
+//⢣⡀⠀⠉⠲⢤⣀⡀⠀⠀⠀⠀⠀⠀⢀⣀⡤⠖⠉⠀⢀⡜
+//⢸⡉⠒⠄⠀⠀⠀⢉⡙⢢⠀⠀⡔⢋⡉⠀⠀⠀⠠⠒⢉⡇
+  //⠉⢖⠒⠀⠀⠀⣇⠀⣸⠀⠀⣇⠀⣸⠀⠀⠀⠒⡲⠉⠀
+    //⠉⠙⠫⠤⠚⠉⠀⠀⠀⠀⠉⠓⠤⠝⠋⠉ 
+
+//--------------------comentarios-----------------------//
+
+
+function deletarcomentarios($conexao, $idcomentarios) {
+    $sql = "DELETE FROM comentarios WHERE idcomentarios = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando, 'i', $idcomentarios);
+    $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_close($comando);
+    return $funcionou; //true ou false
+};
+
+function listarcomentarios($conexao) {
+    $sql = "SELECT * FROM comentarios";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+    $lista_comentarios = [];
+    while ($comentarios = mysqli_fetch_assoc($resultado)) {
+        $lista_comentarios[] = $comentarios;
+    }
+    mysqli_stmt_close($comando);
+    return $lista_comentarios;
+};
+
+function salvarcomentarios($conexao, $coment_texto, $coment_idusuarios, $comentarios_estrela) {
+    $sql = "INSERT INTO comentarios (coment_texto, coment_idusuarios, comentarios_estrela) VALUES (?, ?, ?)";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando,'sii', $coment_texto, $coment_idusuarios, $comentarios_estrela);
+    $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_close($comando);
+    return $funcionou;
+};
+
+function editarcomentarios($conexao, $coment_texto, $coment_idusuarios, $comentarios_estrela,$idcomentarios) {
+    $sql = "UPDATE comentarios SET texto=?, idusuarios=?, estrela=?, WHERE idcomentarios=?";
+    $comando = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($comando,'sii', $coment_texto, $coment_idusuarios, $comentarios_estrela, $idcomentarios);
+    $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_close($comando);
+    return $funcionou;
+};
+
+
 ?>
