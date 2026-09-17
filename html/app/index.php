@@ -9,7 +9,7 @@ $pagina = $_GET['pagina'] ?? 'produtos';
 $paginasPermitidas = ['servicos', 'agenda', 'avalie', 'perfil', 'profissionais', 'clientes'];
 
 if (!in_array($pagina, $paginasPermitidas)) {
-    $pagina = 'produtos'; // se a página não existir na lista, cai no padrão
+    $pagina = 'servicos'; // se a página não existir na lista, cai no padrão
 }
 
 $arquivoPagina = RAIZ . '/paginas/' . $pagina . '.php';
