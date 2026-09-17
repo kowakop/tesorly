@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Caminho absoluto da pasta "html" (uma pasta acima de "app")
 define('RAIZ', dirname(__DIR__));
 

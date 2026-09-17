@@ -1,14 +1,12 @@
 <?php
 session_start();
+require_once '../conexao.php';
 require_once '../funcoes.php';
-verficarLogin();
+verificarLogin();
+
 
 $mensagem = "";
 
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ../usuarios/cadastrosuser.php");
-    exit;
-}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
