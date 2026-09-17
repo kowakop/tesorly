@@ -11,7 +11,7 @@
     $sucesso = login($conexao, $email, $senha);
 
     if ($sucesso == true){
-        header("Location: agendamento/agendaprincipal.php");
+        header("Location: app/index.php");
         exit;
     }
 }
