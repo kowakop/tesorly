@@ -21,10 +21,8 @@ $pagina = $pagina ?? ($_GET['pagina'] ?? 'produtos');
                 <ul>
                     <li><a href="?pagina=servicos"     class="<?= $pagina === 'servicos'     ? 'ativo' : '' ?>">Serviços disponíveis</a></li>
                     <li><a href="?pagina=agenda"        class="<?= $pagina === 'agenda'        ? 'ativo' : '' ?>">Agenda</a></li>
-                    <li><a href="?pagina=produtos"      class="<?= $pagina === 'produtos'      ? 'ativo' : '' ?>">Produtos</a></li>
                     <li><a href="?pagina=avalie"        class="<?= $pagina === 'avalie'        ? 'ativo' : '' ?>">Avalie</a></li>
                     <li><a href="?pagina=perfil"        class="<?= $pagina === 'perfil'        ? 'ativo' : '' ?>">Meu perfil</a></li>
-                    <li><a href="?pagina=pagamentos"    class="<?= $pagina === 'pagamentos'    ? 'ativo' : '' ?>">Pagamentos</a></li>
                     <li><a href="?pagina=profissionais" class="<?= $pagina === 'profissionais' ? 'ativo' : '' ?>">Profissionais</a></li>
                     <li><a href="?pagina=clientes"      class="<?= $pagina === 'clientes'      ? 'ativo' : '' ?>">Clientes</a></li>
                 </ul>
