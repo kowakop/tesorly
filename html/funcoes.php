@@ -479,10 +479,10 @@ function listarcomentarios($conexao) {
     return $lista_comentarios;
 };
 
-function salvarcomentarios($conexao, $coment_texto, $coment_idusuarios, $comentarios_estrela) {
-    $sql = "INSERT INTO comentarios (coment_texto, coment_idusuarios, comentarios_estrela) VALUES (?, ?, ?)";
+function salvarcomentarios($conexao, $coment_texto, $comentarios_estrela) {
+    $sql = "INSERT INTO comentarios (coment_texto, comentarios_estrela) VALUES (?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando,'sii', $coment_texto, $coment_idusuarios, $comentarios_estrela);
+    mysqli_stmt_bind_param($comando,'si', $coment_texto, $comentarios_estrela);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
     return $funcionou;

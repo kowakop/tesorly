@@ -11,17 +11,18 @@ $mensagem = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $coment_text = $_POST['coment_text'] ?? '';
-    $coment_idusuario = $_SESSION['coment_idusuario'];
-    $coment_estrela = $_POST['coment_estrela'] ?? '';
-    
+    $idusuario = $_SESSION['id_usuario'] ?? null;
 
-    $resultado = salvarcomentarios($conexao, $coment_text, $coment_idusuario, $coment_estrela);
-
-    if ($resultado) {
-        unset($_SESSION['id_usuario']);
-        $mensagem = "Comentário enviado com sucesso!";
+    if (!$idusuario) {
+        $mensagem = "Usuário não autenticado.";
     } else {
-        $mensagem = "Erro ao comentar.";
+        $resultado = salvarcomentarios($conexao, $coment_text, $idusuario);
+
+        if ($resultado) {
+            $mensagem = "Comentário enviado com sucesso!";
+        } else {
+            $mensagem = "Erro ao comentar.";
+        }
     }
 }
 ?>
@@ -34,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Comentarios</title>
 </head>
 <body>
-    <form method="POST" enctype="multipart/form-data">
+    <form action="/comentarios/save_comentario.php" method="POST" enctype="multipart/form-data">
     <p>
         <label>comentario: </label><br>
         <input type="text" name="coment_text" required>
