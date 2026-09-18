@@ -108,7 +108,7 @@ foreach ($produtos as $produto) {
 
                 </div>
 
-                <button class="btn-add">Adicionar novo serviço <span>+</span></button>
+                <button class="btn-add"><a href="../produtos/cad_prod.php">Adicionar novo serviço</a> <span>+</span></button>
 
             </main>
 

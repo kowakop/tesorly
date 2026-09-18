@@ -19,14 +19,8 @@ if (!$usuario) {
     <link rel="stylesheet" href="../css/style.css">
     <title>Meu Perfil - Tesorly</title>
     <style>
-        .perfil_body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #f4f4f4;
-        }
 
+        /* depois passar esse css para a pagina de css e concertar para ficar centralizado e responsivo */
         .perfil_card {
             background: #fff;
             border-radius: 16px;
@@ -117,7 +111,7 @@ if (!$usuario) {
             </div>
         </div>
 
-        <button class="perfil_button" onclick="location.href='editar_perfil.php'">Editar Perfil</button>
+        <button class="perfil_button" onclick="location.href='../paginas/editar_perfil.php'">Editar Perfil</button>
     </div>
 
 </body>
