@@ -10,13 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $telefone = $_POST['telefone'] ?? '';
     $senha_pura = $_POST['senha'] ?? '';
     $sou_emp = isset($_POST['sou_emp']);
+    $fotos = $_FILES['prod_fotos'] ?? null;
 
-    $fotos = "";
-
-    if (empty($nome) || empty($email) || empty($telefone) || empty($senha_pura)) {
-        echo "<script>alert('Por favor, preencha todos os campos obrigatórios!'); window.history.back();</script>";
-        exit;
-    }
+   if (empty($nome) || empty($email) || empty($telefone) || empty($senha_pura) 
+    || !isset($fotos) || $fotos['error'] !== UPLOAD_ERR_OK) {
+    exit;
+}
 
     $senha_criptografada = password_hash($senha_pura, PASSWORD_DEFAULT);
 

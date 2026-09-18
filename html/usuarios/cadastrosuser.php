@@ -31,7 +31,7 @@
 
         <img src="../imagens/cabelo.png" alt="foto mulher" class="foto_cadastro">
 
-    <form action="../saves/save_user.php" method="post" id="form" class="form_cadastro">
+    <form action="../saves/save_user.php" method="post" id="form" class="form_cadastro" enctype="multipart/form-data">
 
         <div class="form-content-cadastro">
             <label for="name" class="label-cadastro">Nome Completo:</label>
@@ -46,6 +46,11 @@
         <div class="form-content-cadastro">
             <label for="telefone" class="label-cadastro">Telefone:</label>
             <input type="tel" id="telefone" name="telefone" class="input-cadastro">
+        </div>
+
+        <div class="form-content-cadastro">
+            <label for="prod_fotos" class="label-cadastro">Foto do Produto:</label>
+            <input type="file" id="prod_fotos" name="prod_fotos" accept="image/*" class="input-cadastro" >
         </div>
 
         <div class="form-content-cadastro">

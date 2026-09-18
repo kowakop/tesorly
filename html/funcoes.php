@@ -43,13 +43,51 @@ function listaruser($conexao) {
 
 //string s numero i
 function salvaruser($conexao, $nome, $email, $senha, $telefone, $fotos) {
+
+    // 1. Definir pasta de destino (ajuste o caminho conforme sua estrutura)
+    $pasta_destino = '../uploads/usuarios/';
+
+    // Cria a pasta se não existir
+    if (!is_dir($pasta_destino)) {
+        mkdir($pasta_destino, 0755, true);
+    }
+
+    // 2. Validar se o upload realmente ocorreu sem erro
+    if ($fotos['error'] !== UPLOAD_ERR_OK) {
+        return false;
+    }
+
+    // 3. Gerar nome único pra evitar sobrescrever arquivos com mesmo nome
+    $extensao = pathinfo($fotos['name'], PATHINFO_EXTENSION);
+    $nome_arquivo = uniqid('user_', true) . '.' . $extensao;
+    $caminho_completo = $pasta_destino . $nome_arquivo;
+
+    // 4. Mover o arquivo do temporário pra pasta definitiva
+    if (!move_uploaded_file($fotos['tmp_name'], $caminho_completo)) {
+        return false;
+    }
+
+    // 5. Agora sim, salvar o NOME (string) no banco
     $sql = "INSERT INTO usuarios (user_nome, user_email, user_senha, user_telefone, user_fotos) VALUES (?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($comando, 'sssss', $nome, $email, $senha, $telefone, $fotos);
+    mysqli_stmt_bind_param($comando, 'sssss', $nome, $email, $senha, $telefone, $nome_arquivo);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
+
+    // Se falhar ao salvar no banco, remove o arquivo que foi movido (opcional, mas recomendado)
+    if (!$funcionou) {
+        unlink($caminho_completo);
+    }
+
     return $funcionou;
+
+    $tipos_permitidos = ['jpg', 'jpeg', 'png', 'webp'];
+if (!in_array(strtolower($extensao), $tipos_permitidos)) {
+    return false;}
 }
+
+
+
 
 function editaruser($conexao, $nome, $email, $senha, $telefone, $fotos, $idusuarios){
     $sql = "UPDATE usuarios SET nome=?, email=?, senha=?, telefone=?, fotos=? WHERE idusuarios=?";

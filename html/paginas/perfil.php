@@ -99,9 +99,9 @@ if (!$usuario) {
 
     <div class="perfil_card">
         <?php if (!empty($usuario['user_fotos'])): ?>
-            <img src="../imagens/<?= htmlspecialchars($usuario['user_fotos']) ?>" alt="Foto de perfil" class="perfil_foto">
+            <img src="../uploads/usuarios/<?= htmlspecialchars($usuario['user_fotos']) ?>" alt="Foto de perfil" class="perfil_foto">
         <?php else: ?>
-            <img src="../imagens/default.png" alt="Sem foto" class="perfil_foto">
+            <img src="../uploads/usuarios" alt="Sem foto" class="perfil_foto">
         <?php endif; ?>
 
         <div class="perfil_nome"><?= htmlspecialchars($usuario['user_nome']) ?></div>
