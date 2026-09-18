@@ -5,10 +5,9 @@ verificarLogin();
 
 
 echo "<h2> Empresários Cadastrados </h2>";
-$empresario = listarEmpresarios($conexao);
-while($empresarios = $empresario->fetch_assoc()){
-    print_r($empresarios);
+$empresario = listarempresario($conexao);
+foreach($empresario as $empresario){
+    print_r($empresario);
     echo "<br>";
 }
 
-?>
